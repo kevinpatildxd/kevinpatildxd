@@ -45,7 +45,7 @@ const allSkills = skillCategories.flatMap(cat => cat.skills);
 
 export default function SkillsPage() {
     return (
-        <div className="min-h-screen px-6 py-8">
+        <div className="min-h-screen px-3 py-4 md:px-6 md:py-8">
             <div className="max-w-[1400px] mx-auto">
                 {/* Header */}
                 <motion.div
@@ -62,7 +62,7 @@ export default function SkillsPage() {
                     >
                         Expertise
                     </motion.span>
-                    <h1 className="text-5xl font-bold text-[#2D1248] dark:text-white mb-4 drop-shadow-sm">Skills & Technologies</h1>
+                    <h1 className="text-3xl md:text-5xl font-bold text-[#2D1248] dark:text-white mb-4 drop-shadow-sm">Skills & Technologies</h1>
                     <p className="text-lg text-[#4A3660] dark:text-white/70 max-w-2xl mx-auto">
                         Technologies I've learned and use to build modern web and mobile applications.
                     </p>
@@ -99,7 +99,7 @@ export default function SkillsPage() {
                     transition={{ delay: 0.4 }}
                 >
                     <h2 className="text-3xl font-bold text-primary text-center mb-10">By Category</h2>
-                    <div className="grid grid-cols-3 gap-6">
+                    <div className="grid grid-cols-1 lg:grid-cols-2 xl:grid-cols-3 gap-6">
                         {skillCategories.map((category, index) => (
                             <BentoCard key={category.title} delay={index + 3}>
                                 <div className="h-full flex flex-col">

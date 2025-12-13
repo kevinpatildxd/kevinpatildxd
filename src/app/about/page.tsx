@@ -26,7 +26,7 @@ export default function AboutPage() {
     };
 
     return (
-        <div className="min-h-screen px-6 py-8">
+        <div className="min-h-screen px-3 py-4 md:px-6 md:py-8">
             <div className="max-w-[1400px] mx-auto">
                 {/* Header */}
                 <motion.div
@@ -43,20 +43,20 @@ export default function AboutPage() {
                     >
                         About & Contact
                     </motion.span>
-                    <h1 className="text-5xl font-bold text-[#2D1248] dark:text-white mb-4 drop-shadow-sm">Let's Connect</h1>
+                    <h1 className="text-3xl md:text-5xl font-bold text-[#2D1248] dark:text-white mb-4 drop-shadow-sm">Let's Connect</h1>
                     <p className="text-lg text-[#4A3660] dark:text-white/70 max-w-2xl mx-auto">
                         Learn more about me and get in touch for collaborations, opportunities, or just to say hello!
                     </p>
                 </motion.div>
 
-                {/* Two Column Layout */}
-                <div className="flex gap-8">
+                {/* Two Column Layout - Responsive */}
+                <div className="flex flex-col lg:flex-row gap-8">
                     {/* Left Column - Bio & Avatar */}
                     <motion.div
                         initial={{ opacity: 0, x: -30 }}
                         animate={{ opacity: 1, x: 0 }}
                         transition={{ delay: 0.3 }}
-                        className="w-1/2 space-y-6"
+                        className="w-full lg:w-1/2 space-y-6"
                     >
                         {/* Avatar Card */}
                         <BentoCard className="relative overflow-hidden" delay={0}>
@@ -113,7 +113,7 @@ export default function AboutPage() {
                         </BentoCard>
 
                         {/* Stats Grid */}
-                        <div className="grid grid-cols-3 gap-4">
+                        <div className="grid grid-cols-3 gap-3 md:gap-4">
                             <BentoCard delay={2} className="text-center !p-5">
                                 <span className="text-4xl font-bold text-primary">8.15</span>
                                 <p className="text-sm text-primary/60 mt-1">GPA</p>
@@ -177,7 +177,7 @@ export default function AboutPage() {
                         initial={{ opacity: 0, x: 30 }}
                         animate={{ opacity: 1, x: 0 }}
                         transition={{ delay: 0.4 }}
-                        className="w-1/2"
+                        className="w-full lg:w-1/2"
                     >
                         <BentoCard className="h-full" delay={1} hover={false}>
                             <h2 className="text-2xl font-bold text-primary mb-6">Send a Message</h2>

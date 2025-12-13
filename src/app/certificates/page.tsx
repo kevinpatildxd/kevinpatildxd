@@ -29,7 +29,7 @@ export default function CertificatesPage() {
     const [selectedCert, setSelectedCert] = useState(certificates[0]);
 
     return (
-        <div className="min-h-screen px-6 py-8">
+        <div className="min-h-screen px-3 py-4 md:px-6 md:py-8">
             <div className="max-w-[1400px] mx-auto">
                 {/* Header */}
                 <motion.div
@@ -46,20 +46,20 @@ export default function CertificatesPage() {
                     >
                         Credentials
                     </motion.span>
-                    <h1 className="text-5xl font-bold text-[#2D1248] dark:text-white mb-4 drop-shadow-sm">Certificates</h1>
+                    <h1 className="text-3xl md:text-5xl font-bold text-[#2D1248] dark:text-white mb-4 drop-shadow-sm">Certificates</h1>
                     <p className="text-lg text-[#4A3660] dark:text-white/70 max-w-2xl mx-auto">
                         Professional certifications and job simulations that demonstrate my skills and learning journey.
                     </p>
                 </motion.div>
 
-                {/* Split View Layout */}
-                <div className="flex gap-6 h-[600px]">
+                {/* Split View Layout - Responsive */}
+                <div className="flex flex-col lg:flex-row gap-6 min-h-[600px] lg:h-[600px]">
                     {/* Left Side - Certificate List (30%) */}
                     <motion.div
                         initial={{ opacity: 0, x: -30 }}
                         animate={{ opacity: 1, x: 0 }}
                         transition={{ delay: 0.3 }}
-                        className="w-[30%] overflow-y-auto pr-2 space-y-3"
+                        className="w-full lg:w-[30%] overflow-y-auto lg:pr-2 space-y-3"
                     >
                         {certificates.map((cert, index) => (
                             <motion.div
@@ -114,7 +114,7 @@ export default function CertificatesPage() {
                         initial={{ opacity: 0, x: 30 }}
                         animate={{ opacity: 1, x: 0 }}
                         transition={{ delay: 0.4 }}
-                        className="w-[70%]"
+                        className="w-full lg:w-[70%]"
                     >
                         <AnimatePresence mode="wait">
                             <motion.div

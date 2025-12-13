@@ -39,7 +39,7 @@ export default function ProjectCard({
             className="group bg-white rounded-bento overflow-hidden shadow-bento hover:shadow-bento-hover transition-all duration-500"
         >
             {/* Image */}
-            <div className="relative h-[220px] overflow-hidden">
+            <div className="relative h-[180px] lg:h-[220px] overflow-hidden">
                 <div
                     className="absolute inset-0 bg-gradient-to-br from-primary/20 to-tertiary/20"
                     style={{
@@ -64,11 +64,11 @@ export default function ProjectCard({
             </div>
 
             {/* Content */}
-            <div className="p-6">
-                <h3 className="text-xl font-bold text-primary mb-2 group-hover:text-tertiary transition-colors">
+            <div className="p-4 lg:p-6">
+                <h3 className="text-lg lg:text-xl font-bold text-primary mb-2 group-hover:text-tertiary transition-colors">
                     {title}
                 </h3>
-                <p className="text-primary/70 text-sm mb-6 line-clamp-2">
+                <p className="text-primary/70 text-xs lg:text-sm mb-4 lg:mb-6 line-clamp-2">
                     {description}
                 </p>
 
@@ -80,7 +80,7 @@ export default function ProjectCard({
                         data-magnetic
                     >
                         <motion.span
-                            className="flex items-center justify-center gap-2 px-4 py-2.5 border-2 border-primary text-primary rounded-full text-sm font-semibold hover:bg-primary hover:text-white transition-all"
+                            className="flex items-center justify-center gap-1 lg:gap-2 px-3 py-2 lg:px-4 lg:py-2.5 border-2 border-primary text-primary rounded-full text-xs lg:text-sm font-semibold hover:bg-primary hover:text-white transition-all"
                             whileHover={{ scale: 1.02 }}
                             whileTap={{ scale: 0.98 }}
                         >
@@ -96,7 +96,7 @@ export default function ProjectCard({
                         data-magnetic
                     >
                         <motion.span
-                            className="flex items-center justify-center gap-2 px-4 py-2.5 bg-gradient-to-r from-primary to-tertiary text-white rounded-full text-sm font-semibold hover:from-tertiary hover:to-primary transition-all"
+                            className="flex items-center justify-center gap-1 lg:gap-2 px-3 py-2 lg:px-4 lg:py-2.5 bg-gradient-to-r from-primary to-tertiary text-white rounded-full text-xs lg:text-sm font-semibold hover:from-tertiary hover:to-primary transition-all"
                             whileHover={{ scale: 1.02 }}
                             whileTap={{ scale: 0.98 }}
                         >

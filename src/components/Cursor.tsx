@@ -145,8 +145,8 @@ export default function Cursor() {
                         <motion.div
                             className="rounded-full bg-white"
                             animate={{
-                                width: isHovering ? 40 : isClicking ? 6 : 10,
-                                height: isHovering ? 40 : isClicking ? 6 : 10,
+                                width: isClicking ? 6 : isHovering ? 12 : 10,
+                                height: isClicking ? 6 : isHovering ? 12 : 10,
                                 opacity: 1,
                                 scale: isClicking ? 0.8 : 1,
                             }}

@@ -14,7 +14,7 @@ const projects: Array<{
         {
             title: 'ODOO_SIGKILL_BOTS',
             description: 'A full-stack Q&A forum platform with user authentication, real-time voting, tag-based filtering, and notification system. Built with Node.js backend and Flutter frontend.',
-            image: '/project-stackit.png',
+            image: '/kevinpatildxd/project-stackit.png',
             tags: ['Flutter', 'Node.js', 'PostgreSQL', 'Socket.io'],
             codeUrl: 'https://github.com/kevinpatildxd/ODOO_SIGKILL_BOTS',
             liveUrl: '#',
@@ -22,7 +22,7 @@ const projects: Array<{
         {
             title: 'crystal-canvas',
             description: 'A modern React web application built with Vite, TypeScript, shadcn-ui, and Tailwind CSS. Features crystal-like glass morphism design with elegant UI components.',
-            image: '/project-crystal-canvas.png',
+            image: '/kevinpatildxd/project-crystal-canvas.png',
             tags: ['React', 'TypeScript', 'Vite', 'Tailwind CSS'],
             codeUrl: 'https://github.com/kevinpatildxd/crystal-canvas',
             liveUrl: 'https://shreeradheshyam.vercel.app',
@@ -30,7 +30,7 @@ const projects: Array<{
         {
             title: 'Reactjs-cryptojs-Based-project',
             description: 'A collection of privacy-focused React applications using CryptoJS for AES encryption. All data is encrypted before being stored in LocalStorage for maximum security.',
-            image: '/project-cryptojs.png',
+            image: '/kevinpatildxd/project-cryptojs.png',
             tags: ['React', 'CryptoJS', 'AES Encryption', 'JavaScript'],
             codeUrl: 'https://github.com/kevinpatildxd/Reactjs-cryptojs-Based-project',
             liveUrl: '#',
@@ -38,7 +38,7 @@ const projects: Array<{
         {
             title: 'smart-contract',
             description: 'A full-stack decentralized application (dApp) with Solidity smart contracts and React frontend. Features MetaMask wallet integration and Web3/Ethers.js for blockchain interactions.',
-            image: '/project-smart-contract.png',
+            image: '/kevinpatildxd/project-smart-contract.png',
             tags: ['Solidity', 'React', 'Ethereum', 'Web3'],
             codeUrl: 'https://github.com/kevinpatildxd/smart-contract',
             liveUrl: '#',
@@ -46,7 +46,7 @@ const projects: Array<{
         {
             title: 'moto-link-app',
             description: 'Rider group connectivity app with low-latency voice chat (WebRTC), live GPS tracking, group management, and battery-efficient background location updates for motorcycle riders.',
-            image: '/project-motolink.png',
+            image: '/kevinpatildxd/project-motolink.png',
             tags: ['Flutter', 'Dart', 'WebRTC', 'GPS'],
             codeUrl: 'https://github.com/kevinpatildxd/moto-link-app',
             liveUrl: '#',
@@ -54,7 +54,7 @@ const projects: Array<{
         {
             title: 'interior-design',
             description: 'A high-performance interior design portfolio website with Next.js. Features image optimization, SSR, mobile-first responsive design, and immersive visual galleries.',
-            image: '/project-interior.png',
+            image: '/kevinpatildxd/project-interior.png',
             tags: ['Next.js', 'TypeScript', 'Vercel', 'SSR'],
             codeUrl: 'https://github.com/kevinpatildxd/interior-design',
             liveUrl: 'https://interiordesign-phi-three.vercel.app',
@@ -62,7 +62,7 @@ const projects: Array<{
         {
             title: 'IHWP-Project',
             description: 'A responsive web project featuring interactive UI with DOM manipulation, modern CSS3 styling with Flexbox/Grid, form validation, and clean code structure following best practices.',
-            image: '/project-ihwp.png',
+            image: '/kevinpatildxd/project-ihwp.png',
             tags: ['JavaScript', 'HTML', 'CSS', 'DOM'],
             codeUrl: 'https://github.com/kevinpatildxd/IHWP-Project',
             liveUrl: '#',
@@ -70,7 +70,7 @@ const projects: Array<{
         {
             title: 'vastra',
             description: 'Premium ethnic wear e-commerce platform for Indian sarees, lehengas, and salwar kameez. Features hybrid B2B/B2C model, advanced filtering, wishlist, cart, and WhatsApp enquiry.',
-            image: '/project-vastra.png',
+            image: '/kevinpatildxd/project-vastra.png',
             tags: ['Next.js', 'TypeScript', 'Tailwind', 'Framer Motion'],
             codeUrl: 'https://github.com/kevinpatildxd/vastra',
             liveUrl: 'https://vastra-beryl.vercel.app',
@@ -80,7 +80,7 @@ const projects: Array<{
 
 export default function ProjectsPage() {
     return (
-        <div className="min-h-screen px-6 py-8">
+        <div className="min-h-screen px-3 py-4 md:px-6 md:py-8">
             <div className="max-w-[1400px] mx-auto">
                 {/* Header */}
                 <motion.div
@@ -97,14 +97,14 @@ export default function ProjectsPage() {
                     >
                         My Work
                     </motion.span>
-                    <h1 className="text-5xl font-bold text-[#2D1248] dark:text-white mb-4 drop-shadow-sm">Featured Projects</h1>
+                    <h1 className="text-3xl md:text-5xl font-bold text-[#2D1248] dark:text-white mb-4 drop-shadow-sm">Featured Projects</h1>
                     <p className="text-lg text-[#4A3660] dark:text-white/70 max-w-2xl mx-auto">
                         A collection of my projects showcasing full-stack development, mobile apps, and blockchain technology.
                     </p>
                 </motion.div>
 
-                {/* Projects Grid - 3 columns */}
-                <div className="grid grid-cols-3 gap-6">
+                {/* Projects Grid - Responsive: 1 col on sm, 2 cols on lg, 3 cols on xl */}
+                <div className="grid grid-cols-1 lg:grid-cols-2 xl:grid-cols-3 gap-6">
                     {projects.map((project, index) => (
                         <ProjectCard
                             key={project.title}

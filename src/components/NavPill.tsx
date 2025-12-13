@@ -35,9 +35,9 @@ export default function NavPill() {
                                     data-magnetic
                                 >
                                     <motion.span
-                                        className={`block px-5 py-2.5 rounded-full text-sm font-semibold transition-colors ${isActive
-                                                ? 'text-white'
-                                                : 'text-primary hover:text-tertiary'
+                                        className={`block px-3 py-2 lg:px-5 lg:py-2.5 rounded-full text-xs lg:text-sm font-semibold transition-colors ${isActive
+                                            ? 'text-white'
+                                            : 'text-primary hover:text-tertiary'
                                             }`}
                                         whileHover={{ scale: 1.05 }}
                                         whileTap={{ scale: 0.95 }}

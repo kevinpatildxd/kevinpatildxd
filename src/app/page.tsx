@@ -11,23 +11,23 @@ import Link from 'next/link';
 
 export default function HomePage() {
   return (
-    <div className="min-h-screen px-6 py-8">
+    <div className="min-h-screen px-3 py-4 md:px-6 md:py-8">
       <div className="max-w-[1400px] mx-auto">
-        {/* Bento Grid - 4 columns x 4 rows */}
-        <div className="grid grid-cols-4 grid-rows-4 gap-5 h-[calc(100vh-160px)]">
+        {/* Bento Grid - Responsive: 2 cols on md, 3 cols on lg, 4 cols on xl+ */}
+        <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 xl:grid-cols-4 auto-rows-auto xl:grid-rows-4 gap-4 md:gap-5 min-h-[calc(100vh-160px)] xl:h-[calc(100vh-160px)]">
 
-          {/* Main Visual Block - Spans 2 columns x 4 rows */}
+          {/* Main Visual Block - Responsive spanning */}
           <BentoCard
-            className="col-span-2 row-span-4 relative overflow-hidden p-0"
+            className="col-span-1 md:col-span-2 row-span-2 xl:row-span-4 relative overflow-hidden p-0 min-h-[400px] md:min-h-[500px] xl:min-h-0"
             delay={0}
             hover={false}
           >
             {/* Video/Image Placeholder with Gradient Overlay */}
-            <div className="absolute inset-0 bg-gradient-to-br from-primary via-tertiary to-secondary">
+            <div className="absolute inset-0 bg-gradient-to-br from-primary via-tertiary to-secondary overflow-hidden">
               {/* Animated Background Pattern */}
-              <div className="absolute inset-0 opacity-20">
+              <div className="absolute inset-0 opacity-20 overflow-hidden">
                 <motion.div
-                  className="absolute top-10 left-10 w-32 h-32 rounded-full bg-white/30"
+                  className="absolute top-5 left-5 md:top-10 md:left-10 w-16 h-16 md:w-32 md:h-32 rounded-full bg-white/30"
                   animate={{
                     scale: [1, 1.2, 1],
                     opacity: [0.3, 0.5, 0.3],
@@ -39,7 +39,7 @@ export default function HomePage() {
                   }}
                 />
                 <motion.div
-                  className="absolute bottom-20 right-20 w-48 h-48 rounded-full bg-white/20"
+                  className="absolute bottom-10 right-10 md:bottom-20 md:right-20 w-24 h-24 md:w-48 md:h-48 rounded-full bg-white/20"
                   animate={{
                     scale: [1.2, 1, 1.2],
                     opacity: [0.4, 0.2, 0.4],
@@ -51,10 +51,10 @@ export default function HomePage() {
                   }}
                 />
                 <motion.div
-                  className="absolute top-1/2 left-1/3 w-24 h-24 rounded-full bg-white/25"
+                  className="absolute top-1/2 left-1/3 w-12 h-12 md:w-24 md:h-24 rounded-full bg-white/25"
                   animate={{
                     scale: [1, 1.3, 1],
-                    y: [-20, 20, -20],
+                    y: [-10, 10, -10],
                   }}
                   transition={{
                     duration: 6,
@@ -68,18 +68,18 @@ export default function HomePage() {
             {/* Cyber Terminal Section */}
             <div className="absolute inset-0 flex flex-col">
               {/* Terminal at the top */}
-              <div className="flex-1 flex items-center justify-center pt-8 px-6">
+              <div className="flex-1 flex items-center justify-center pt-4 px-3 md:pt-8 md:px-6">
                 <CyberTerminal />
               </div>
 
               {/* Content at the bottom */}
-              <div className="p-8">
-                <div className="glass rounded-3xl p-6">
+              <div className="p-4 md:p-6 lg:p-8">
+                <div className="glass rounded-2xl md:rounded-3xl p-4 md:p-6">
                   <motion.p
                     initial={{ opacity: 0, y: 20 }}
                     animate={{ opacity: 1, y: 0 }}
                     transition={{ delay: 0.3 }}
-                    className="text-tertiary font-semibold mb-2"
+                    className="text-tertiary font-semibold mb-1 md:mb-2 text-sm md:text-base"
                   >
                     B.Tech CSE Student & Cybersecurity Enthusiast
                   </motion.p>
@@ -87,7 +87,7 @@ export default function HomePage() {
                     initial={{ opacity: 0, y: 20 }}
                     animate={{ opacity: 1, y: 0 }}
                     transition={{ delay: 0.4 }}
-                    className="text-4xl font-bold text-primary mb-3"
+                    className="text-2xl md:text-3xl lg:text-4xl font-bold text-primary mb-2 md:mb-3"
                   >
                     Kevin Patil
                   </motion.h1>
@@ -95,7 +95,7 @@ export default function HomePage() {
                     initial={{ opacity: 0, y: 20 }}
                     animate={{ opacity: 1, y: 0 }}
                     transition={{ delay: 0.5 }}
-                    className="text-primary/70 text-sm max-w-xl leading-relaxed"
+                    className="text-primary/70 text-xs md:text-sm leading-relaxed line-clamp-4 md:line-clamp-none"
                   >
                     I am currently pursuing a B.Tech in Computer Science Engineering from Uka Tarsadia University, with a primary focus on Cybersecurity and a strong interest in software and web development. I actively work on real-world projects, continuously enhance my technical skills through hands-on development and certifications, and showcase my work through GitHub. I am a motivated learner with a passion for building secure, scalable, and innovative digital solutions while growing as a cybersecurity professional and developer.
                   </motion.p>
@@ -103,7 +103,7 @@ export default function HomePage() {
                     initial={{ opacity: 0, y: 20 }}
                     animate={{ opacity: 1, y: 0 }}
                     transition={{ delay: 0.6 }}
-                    className="mt-5 flex gap-4"
+                    className="mt-3 md:mt-5 flex flex-wrap gap-2 md:gap-4"
                   >
                     <Link href="/projects">
                       <MagneticButton variant="gradient" size="lg">
@@ -123,7 +123,7 @@ export default function HomePage() {
 
           {/* Theme Toggle Card */}
           <BentoCard
-            className="col-span-1 row-span-1 flex flex-col items-center justify-center"
+            className="col-span-1 flex flex-col items-center justify-center min-h-[140px]"
             delay={1}
           >
             <p className="text-sm font-semibold text-primary/60 mb-4">Theme</p>
@@ -132,7 +132,7 @@ export default function HomePage() {
 
           {/* Quick Stats Card - Education */}
           <BentoCard
-            className="col-span-1 row-span-1 flex flex-col justify-center"
+            className="col-span-1 flex flex-col justify-center min-h-[140px]"
             delay={2}
           >
             <div className="flex items-center gap-4">
@@ -148,7 +148,7 @@ export default function HomePage() {
 
           {/* "How It Works" Text Card */}
           <BentoCard
-            className="col-span-1 row-span-1 flex flex-col justify-between"
+            className="col-span-1 flex flex-col justify-between min-h-[140px]"
             delay={3}
           >
             <div>
@@ -171,7 +171,7 @@ export default function HomePage() {
 
           {/* Social Media Cluster */}
           <BentoCard
-            className="col-span-1 row-span-1 flex flex-col justify-center"
+            className="col-span-1 flex flex-col justify-center min-h-[140px]"
             delay={4}
           >
             <p className="text-sm font-semibold text-primary/60 mb-4">Connect</p>
@@ -217,13 +217,13 @@ export default function HomePage() {
 
           {/* Projects Counter Card */}
           <BentoCard
-            className="col-span-1 row-span-1 gradient-card text-white overflow-hidden"
+            className="col-span-1 gradient-card text-white overflow-hidden min-h-[140px]"
             delay={5}
             hover={false}
           >
             <Link href="/projects" className="text-center w-full h-full flex flex-col items-center justify-center -m-6 p-6">
               <motion.span
-                className="text-5xl font-bold text-white"
+                className="text-3xl md:text-5xl font-bold text-white"
                 initial={{ scale: 0 }}
                 animate={{ scale: 1 }}
                 transition={{ type: 'spring', delay: 0.7 }}
@@ -237,7 +237,7 @@ export default function HomePage() {
 
           {/* Fingerprint Scanner Card */}
           <BentoCard
-            className="col-span-1 row-span-1"
+            className="col-span-1 min-h-[140px]"
             delay={6}
           >
             <p className="text-sm font-semibold text-primary/60 mb-2 text-center">Biometric</p>
@@ -246,7 +246,7 @@ export default function HomePage() {
 
           {/* Featured Tech Stack - spans 2 columns */}
           <BentoCard
-            className="col-span-2 row-span-1"
+            className="col-span-1 md:col-span-2 min-h-[100px]"
             delay={7}
           >
             <p className="text-sm font-semibold text-primary/60 mb-3">Tech Stack</p>

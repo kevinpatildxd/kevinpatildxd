@@ -73,12 +73,12 @@ export default function CyberTerminal() {
             initial={{ opacity: 0, scale: 0.9 }}
             animate={{ opacity: 1, scale: 1 }}
             transition={{ duration: 0.5, delay: 0.3 }}
-            className="w-full max-w-md mx-auto"
+            className="w-full max-w-xs md:max-w-md mx-auto"
         >
             {/* Terminal Window */}
-            <div className="bg-gray-900/95 backdrop-blur-sm rounded-2xl shadow-2xl overflow-hidden border border-gray-700/50">
+            <div className="bg-gray-900/95 backdrop-blur-sm rounded-xl md:rounded-2xl shadow-2xl overflow-hidden border border-gray-700/50">
                 {/* Terminal Header */}
-                <div className="bg-gray-800/80 px-4 py-3 flex items-center gap-2">
+                <div className="bg-gray-800/80 px-3 py-2 md:px-4 md:py-3 flex items-center gap-2">
                     <div className="flex gap-2">
                         <div className="w-3 h-3 rounded-full bg-red-500" />
                         <div className="w-3 h-3 rounded-full bg-yellow-500" />
@@ -88,17 +88,17 @@ export default function CyberTerminal() {
                 </div>
 
                 {/* Terminal Content */}
-                <div className="p-5 font-mono text-sm min-h-[200px] max-h-[250px] overflow-hidden">
+                <div className="p-3 md:p-5 font-mono text-xs md:text-sm min-h-[150px] md:min-h-[200px] max-h-[180px] md:max-h-[250px] overflow-hidden">
                     {displayedLines.map((line, index) => (
                         <motion.div
                             key={index}
                             initial={{ opacity: 0, x: -10 }}
                             animate={{ opacity: 1, x: 0 }}
                             className={`mb-1.5 ${line.isHighlight
-                                    ? 'text-green-400 font-bold text-base'
-                                    : line.isSuccess
-                                        ? 'text-green-400'
-                                        : 'text-gray-300'
+                                ? 'text-green-400 font-bold text-base'
+                                : line.isSuccess
+                                    ? 'text-green-400'
+                                    : 'text-gray-300'
                                 }`}
                         >
                             {line.text}
@@ -116,7 +116,7 @@ export default function CyberTerminal() {
                 </div>
 
                 {/* Terminal Footer */}
-                <div className="bg-gray-800/50 px-4 py-2 flex items-center justify-between border-t border-gray-700/30">
+                <div className="bg-gray-800/50 px-3 py-1.5 md:px-4 md:py-2 flex items-center justify-between border-t border-gray-700/30">
                     <div className="flex items-center gap-2">
                         <div className="w-2 h-2 rounded-full bg-green-500 animate-pulse" />
                         <span className="text-green-400 text-xs">SECURE CONNECTION</span>

@@ -6,7 +6,7 @@ import MagneticButton from '@/components/MagneticButton';
 
 export default function ResumePage() {
     return (
-        <div className="min-h-screen px-6 py-8">
+        <div className="min-h-screen px-3 py-4 md:px-6 md:py-8">
             <div className="max-w-[1400px] mx-auto">
                 {/* Header */}
                 <motion.div
@@ -23,20 +23,20 @@ export default function ResumePage() {
                     >
                         Resume
                     </motion.span>
-                    <h1 className="text-5xl font-bold text-[#2D1248] dark:text-white mb-4 drop-shadow-sm">My Resume</h1>
+                    <h1 className="text-3xl md:text-5xl font-bold text-[#2D1248] dark:text-white mb-4 drop-shadow-sm">My Resume</h1>
                     <p className="text-lg text-[#4A3660] dark:text-white/70 max-w-2xl mx-auto">
                         A comprehensive overview of my education, skills, and achievements.
                     </p>
                 </motion.div>
 
-                {/* Full Height Split Layout */}
-                <div className="flex gap-6 h-[calc(100vh-280px)] min-h-[600px]">
+                {/* Full Height Split Layout - Responsive */}
+                <div className="flex flex-col lg:flex-row gap-6 min-h-[600px] lg:h-[calc(100vh-280px)]">
                     {/* Left Side - PDF Preview (70%) */}
                     <motion.div
                         initial={{ opacity: 0, x: -30 }}
                         animate={{ opacity: 1, x: 0 }}
                         transition={{ delay: 0.3 }}
-                        className="w-[70%]"
+                        className="w-full lg:w-[70%]"
                     >
                         <BentoCard className="h-full p-0 overflow-hidden" hover={false}>
                             {/* PDF Embed */}
@@ -54,7 +54,7 @@ export default function ResumePage() {
                                     </div>
                                     <div className="flex items-center gap-2">
                                         <a
-                                            href="/kevin_resume.pdf"
+                                            href="/kevinpatildxd/kevin_resume.pdf"
                                             target="_blank"
                                             className="p-2 hover:bg-white/50 rounded-lg transition-colors"
                                             title="Open in new tab"
@@ -173,7 +173,7 @@ export default function ResumePage() {
                         initial={{ opacity: 0, x: 30 }}
                         animate={{ opacity: 1, x: 0 }}
                         transition={{ delay: 0.4 }}
-                        className="w-[30%] flex flex-col gap-6"
+                        className="w-full lg:w-[30%] flex flex-col gap-6"
                     >
                         {/* Download Card */}
                         <BentoCard className="flex-1 flex flex-col justify-center items-center text-center bg-gradient-to-br from-primary to-tertiary text-white" hover={false}>
@@ -191,7 +191,7 @@ export default function ResumePage() {
                             <h3 className="text-2xl font-bold mb-2">Download Resume</h3>
                             <p className="text-white/70 mb-6">Get a copy of my full resume in PDF format</p>
 
-                            <a href="/kevin_resume.pdf" download="Kevin_Patil_Resume.pdf">
+                            <a href="/kevinpatildxd/kevin_resume.pdf" download="Kevin_Patil_Resume.pdf">
                                 <motion.button
                                     className="px-8 py-4 bg-white text-primary rounded-full font-bold text-lg hover:shadow-2xl transition-shadow magnetic-element"
                                     whileHover={{ scale: 1.05 }}

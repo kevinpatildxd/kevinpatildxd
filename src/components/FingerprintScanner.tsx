@@ -46,7 +46,7 @@ export default function FingerprintScanner() {
     return (
         <div className="flex flex-col items-center justify-center h-full">
             {/* Fingerprint Container */}
-            <div className="relative w-20 h-24">
+            <div className="relative w-16 h-20 md:w-20 md:h-24">
                 {/* Outer Glow */}
                 <motion.div
                     className={`absolute inset-0 rounded-2xl blur-xl ${scanPhase === 'success' ? 'bg-green-500/40' : 'bg-tertiary/30'
@@ -65,7 +65,7 @@ export default function FingerprintScanner() {
                 <div className="relative z-10 w-full h-full flex items-center justify-center">
                     <svg
                         viewBox="0 0 64 80"
-                        className={`w-16 h-20 transition-colors duration-300 ${scanPhase === 'success' ? 'text-green-500' : 'text-primary/60'
+                        className={`w-12 h-16 md:w-16 md:h-20 transition-colors duration-300 ${scanPhase === 'success' ? 'text-green-500' : 'text-primary/60'
                             }`}
                         fill="none"
                         stroke="currentColor"
@@ -167,8 +167,8 @@ export default function FingerprintScanner() {
             <div className="w-16 h-1 bg-secondary rounded-full mt-2 overflow-hidden">
                 <motion.div
                     className={`h-full rounded-full ${scanPhase === 'success'
-                            ? 'bg-green-500'
-                            : 'bg-gradient-to-r from-primary to-tertiary'
+                        ? 'bg-green-500'
+                        : 'bg-gradient-to-r from-primary to-tertiary'
                         }`}
                     initial={{ width: '0%' }}
                     animate={{ width: `${scanProgress}%` }}
