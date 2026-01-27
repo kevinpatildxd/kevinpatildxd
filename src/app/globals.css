@@ -1,43 +1,42 @@
-@import url('https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@300;400;500;600;700;800&display=swap');
-@import "tailwindcss";
+@import url('https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800;900&display=swap');
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
 
 :root {
-  --primary: #50207A;
-  --secondary: #D6B9FC;
-  --tertiary: #838CE5;
-  --background: #F5F3F7;
-  --foreground: #50207A;
-  --white: #FFFFFF;
-  --card-bg: #FFFFFF;
-  --grid-gap: 20px;
-  --border-radius: 30px;
+  --primary: #6366f1;
+  --primary-dark: #4f46e5;
+  --accent: #8b5cf6;
+  --accent-secondary: #a78bfa;
+  --bg: #ffffff;
+  --surface: #f9fafb;
+  --surface-elevated: #f3f4f6;
+  --text: #111827;
+  --text-secondary: #4b5563;
+  --text-tertiary: #6b7280;
+  --text-muted: #6b7280;
+  --border: #e5e7eb;
 }
 
 .dark {
-  --primary: #D6B9FC;
-  --secondary: #50207A;
-  --tertiary: #838CE5;
-  --background: #0D0D12;
-  --foreground: #F5F3F7;
-  --white: #1A1A24;
-  --card-bg: #1A1A24;
+  --primary: #818cf8;
+  --primary-dark: #6366f1;
+  --accent: #a78bfa;
+  --accent-secondary: #c4b5fd;
+  --bg: #0f172a;
+  --surface: #1e293b;
+  --surface-elevated: #334155;
+  --text: #f1f5f9;
+  --text-secondary: #cbd5e1;
+  --text-tertiary: #94a3b8;
+  --text-muted: #94a3b8;
+  --border: #334155;
 }
 
-@theme inline {
-  --color-primary: var(--primary);
-  --color-secondary: var(--secondary);
-  --color-tertiary: var(--tertiary);
-  --color-background: var(--background);
-  --color-foreground: var(--foreground);
-  --color-card-bg: var(--card-bg);
-  --color-dark-background: #0D0D12;
-  --color-dark-foreground: #F5F3F7;
-  --font-sans: "Plus Jakarta Sans", system-ui, sans-serif;
-}
-
-/* Hide system cursor globally */
 * {
-  cursor: none !important;
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
 }
 
 html {
@@ -45,13 +44,10 @@ html {
 }
 
 body {
-  background: var(--background);
-  color: var(--foreground);
-  font-family: "Plus Jakarta Sans", system-ui, sans-serif;
-  overflow-x: hidden;
-  min-height: 100vh;
-  transition: background-color 0.3s ease, color 0.3s ease;
-  cursor: none !important;
+  font-family: 'Inter', system-ui, sans-serif;
+  background-color: var(--bg);
+  color: var(--text);
+  line-height: 1.6;
 }
 
 /* Custom scrollbar */
@@ -60,148 +56,42 @@ body {
 }
 
 ::-webkit-scrollbar-track {
-  background: var(--secondary);
-  border-radius: 4px;
+  background: var(--surface);
 }
 
 ::-webkit-scrollbar-thumb {
-  background: var(--primary);
+  background: var(--border);
   border-radius: 4px;
 }
 
 ::-webkit-scrollbar-thumb:hover {
-  background: var(--tertiary);
+  background: var(--text-muted);
 }
 
-/* Selection styling */
 ::selection {
-  background: var(--tertiary);
+  background: var(--primary);
   color: white;
 }
 
-/* Custom input styles */
-.input-cutout {
-  box-shadow: inset 0 3px 10px rgba(80, 32, 122, 0.15);
-  border: 2px solid transparent;
-  transition: all 0.3s ease;
-}
-
-.dark .input-cutout {
-  box-shadow: inset 0 3px 10px rgba(0, 0, 0, 0.3);
-}
-
-.input-cutout:focus {
-  border-color: var(--tertiary);
-  box-shadow: inset 0 3px 10px rgba(80, 32, 122, 0.1), 0 0 0 3px rgba(131, 140, 229, 0.2);
-}
-
-/* Gradient button */
-.gradient-btn {
-  background: linear-gradient(135deg, #50207A 0%, #838CE5 100%);
-  transition: all 0.3s ease;
-}
-
-.gradient-btn:hover {
-  background: linear-gradient(135deg, #838CE5 0%, #50207A 100%);
-  transform: translateY(-2px);
-  box-shadow: 0 10px 30px rgba(80, 32, 122, 0.3);
-}
-
-/* Glassmorphism */
-.glass {
-  background: rgba(255, 255, 255, 0.85);
-  backdrop-filter: blur(20px);
-  -webkit-backdrop-filter: blur(20px);
-  border: 1px solid rgba(255, 255, 255, 0.3);
-}
-
-.dark .glass {
-  background: rgba(26, 26, 36, 0.85);
-  border: 1px solid rgba(255, 255, 255, 0.1);
-}
-
-/* Bento card base */
-.bento-card {
-  background: var(--card-bg);
-  border-radius: var(--border-radius);
-  padding: 20px;
-  transition: all 0.4s cubic-bezier(0.175, 0.885, 0.32, 1.275);
-  box-shadow: 0 4px 20px rgba(80, 32, 122, 0.08);
-}
-
-/* Responsive padding for bento cards */
-@media (min-width: 768px) {
-  .bento-card {
-    padding: 24px;
+/* Utility Classes */
+@layer components {
+  .input {
+    @apply w-full px-4 py-2.5 rounded-lg border-2 border-gray-200 dark:border-gray-700 bg-white dark:bg-gray-800 text-gray-900 dark:text-gray-100 placeholder:text-gray-400 dark:placeholder:text-gray-500 focus:outline-none focus:ring-2 focus:ring-accent focus:border-transparent transition-all duration-200;
   }
-}
 
-/* Gradient card override */
-.bento-card.gradient-card {
-  background: linear-gradient(135deg, var(--tertiary) 0%, var(--primary) 100%) !important;
-}
+  .btn-primary {
+    @apply px-6 py-2.5 bg-gradient-to-r from-accent to-primary text-white font-semibold rounded-lg hover:from-primary hover:to-accent focus:outline-none focus:ring-2 focus:ring-accent focus:ring-offset-2 disabled:opacity-50 disabled:cursor-not-allowed transition-all duration-200;
+  }
 
-.dark .bento-card {
-  box-shadow: 0 4px 20px rgba(0, 0, 0, 0.3);
-}
+  .card {
+    @apply bg-white dark:bg-gray-800 rounded-2xl shadow-lg border border-gray-100 dark:border-gray-700 transition-all duration-200;
+  }
 
-.bento-card:hover {
-  box-shadow: 0 20px 40px rgba(80, 32, 122, 0.15);
-}
+  .tag {
+    @apply px-3 py-1.5 rounded-lg bg-gray-100 dark:bg-gray-700 text-gray-700 dark:text-gray-300 text-sm font-medium border border-gray-200 dark:border-gray-600 transition-all duration-200;
+  }
 
-.dark .bento-card:hover {
-  box-shadow: 0 20px 40px rgba(0, 0, 0, 0.4);
-}
-
-/* Dark mode text colors */
-.dark .text-primary {
-  color: var(--primary) !important;
-}
-
-.dark .text-primary\/60 {
-  color: rgba(214, 185, 252, 0.6) !important;
-}
-
-.dark .text-primary\/70 {
-  color: rgba(214, 185, 252, 0.7) !important;
-}
-
-.dark .bg-white {
-  background-color: var(--card-bg) !important;
-}
-
-.dark .bg-secondary {
-  background-color: var(--secondary) !important;
-}
-
-.dark .border-primary {
-  border-color: var(--primary) !important;
-}
-
-.dark .border-secondary {
-  border-color: var(--secondary) !important;
-}
-
-/* Dark mode for specific elements */
-.dark .bg-background {
-  background-color: var(--background) !important;
-}
-
-/* Magnetic button hover effect */
-.magnetic-element {
-  transition: transform 0.3s cubic-bezier(0.175, 0.885, 0.32, 1.275);
-}
-
-.magnetic-element:hover {
-  transform: scale(1.02);
-}
-
-/* Nav pill styling for cursor detection */
-.nav-pill {
-  cursor: none !important;
-}
-
-/* Link styling for cursor detection */
-.link {
-  cursor: none !important;
+  .gradient-text {
+    @apply bg-gradient-to-r from-accent to-primary bg-clip-text text-transparent;
+  }
 }

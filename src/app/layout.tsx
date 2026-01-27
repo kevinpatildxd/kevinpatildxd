@@ -1,17 +1,14 @@
 import type { Metadata } from "next";
-import { Plus_Jakarta_Sans } from "next/font/google";
+import { Inter } from "next/font/google";
 import "./globals.css";
-import NavPill from "@/components/NavPill";
-import PageTransition from "@/components/PageTransition";
+import Navigation from "@/components/Navigation";
 import ThemeProvider from "@/components/ThemeProvider";
-import AnimatedBackground from "@/components/AnimatedBackground";
-import ParticlesBackground from "@/components/ParticlesBackground";
-import Cursor from "@/components/Cursor";
+import PageWrapper from "@/components/PageWrapper";
 
-const plusJakartaSans = Plus_Jakarta_Sans({
-  variable: "--font-plus-jakarta",
+const inter = Inter({
   subsets: ["latin"],
-  weight: ["300", "400", "500", "600", "700", "800"],
+  weight: ["300", "400", "500", "600", "700", "800", "900"],
+  variable: "--font-inter",
 });
 
 export const metadata: Metadata = {
@@ -33,26 +30,45 @@ export default function RootLayout({
 }>) {
   return (
     <html lang="en" suppressHydrationWarning>
-      <body className={`${plusJakartaSans.variable} font-sans antialiased bg-background dark:bg-dark-background text-foreground dark:text-dark-foreground min-h-screen transition-colors duration-300`}>
+      <body className={`${inter.variable} font-sans antialiased`} suppressHydrationWarning>
         <ThemeProvider>
-          {/* Antigravity Fluid Cursor */}
-          <Cursor />
-
-          {/* Layer 1: Animated Gradient Blobs (furthest back) */}
-          <AnimatedBackground />
-
-          {/* Layer 2: Particles - Interactive floating dots */}
-          <ParticlesBackground />
-
-          {/* Floating Navigation */}
-          <NavPill />
-
-          {/* Main Content with Page Transitions */}
-          <main className="pt-24 relative z-10">
-            <PageTransition>
-              {children}
-            </PageTransition>
+          <Navigation />
+          <main>
+            <PageWrapper>{children}</PageWrapper>
           </main>
+          <footer className="border-t border-gray-200 dark:border-gray-800 bg-white dark:bg-gray-900">
+            <div className="container mx-auto px-4 sm:px-6 lg:px-8 py-8">
+              <div className="flex flex-col md:flex-row justify-between items-center gap-4">
+                <p className="text-sm text-gray-600 dark:text-gray-400">
+                  © 2024 Kevin Patil. All rights reserved.
+                </p>
+                <div className="flex items-center gap-6">
+                  <a
+                    href="https://github.com/kevinpatildxd"
+                    target="_blank"
+                    rel="noopener noreferrer"
+                    className="text-sm text-gray-600 dark:text-gray-400 hover:text-indigo-600 dark:hover:text-indigo-400 transition-colors"
+                  >
+                    GitHub
+                  </a>
+                  <a
+                    href="https://www.linkedin.com/in/kevin-patil-1b8a75291/"
+                    target="_blank"
+                    rel="noopener noreferrer"
+                    className="text-sm text-gray-600 dark:text-gray-400 hover:text-indigo-600 dark:hover:text-indigo-400 transition-colors"
+                  >
+                    LinkedIn
+                  </a>
+                  <a
+                    href="mailto:kevinpatil6354@gmail.com"
+                    className="text-sm text-gray-600 dark:text-gray-400 hover:text-indigo-600 dark:hover:text-indigo-400 transition-colors"
+                  >
+                    Email
+                  </a>
+                </div>
+              </div>
+            </div>
+          </footer>
         </ThemeProvider>
       </body>
     </html>

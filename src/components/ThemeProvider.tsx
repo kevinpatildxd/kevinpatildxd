@@ -2,60 +2,50 @@
 
 import { createContext, useContext, useEffect, useState, ReactNode } from 'react';
 
-type Theme = 'light' | 'dark';
+type Theme = 'dark' | 'light';
 
 interface ThemeContextType {
     theme: Theme;
     toggleTheme: () => void;
+    mounted: boolean;
 }
 
-const ThemeContext = createContext<ThemeContextType | undefined>(undefined);
+const ThemeContext = createContext<ThemeContextType>({
+    theme: 'dark',
+    toggleTheme: () => { },
+    mounted: false,
+});
 
 export function useTheme() {
-    const context = useContext(ThemeContext);
-    if (!context) {
-        throw new Error('useTheme must be used within a ThemeProvider');
-    }
-    return context;
+    return useContext(ThemeContext);
 }
 
-interface ThemeProviderProps {
-    children: ReactNode;
-}
-
-export default function ThemeProvider({ children }: ThemeProviderProps) {
-    const [theme, setTheme] = useState<Theme>('light');
+export default function ThemeProvider({ children }: { children: ReactNode }) {
+    const [theme, setTheme] = useState<Theme>('dark');
     const [mounted, setMounted] = useState(false);
 
-    // Initialize theme from localStorage on mount
     useEffect(() => {
         setMounted(true);
-        const savedTheme = localStorage.getItem('theme') as Theme | null;
-        if (savedTheme) {
+        const savedTheme = localStorage.getItem('theme') as Theme;
+        if (savedTheme && (savedTheme === 'dark' || savedTheme === 'light')) {
             setTheme(savedTheme);
-            document.documentElement.classList.toggle('dark', savedTheme === 'dark');
         }
     }, []);
 
-    // Update localStorage and document class when theme changes
     useEffect(() => {
         if (mounted) {
+            document.documentElement.classList.remove('dark', 'light');
+            document.documentElement.classList.add(theme);
             localStorage.setItem('theme', theme);
-            document.documentElement.classList.toggle('dark', theme === 'dark');
         }
     }, [theme, mounted]);
 
     const toggleTheme = () => {
-        setTheme((prev) => (prev === 'light' ? 'dark' : 'light'));
+        setTheme(prevTheme => prevTheme === 'dark' ? 'light' : 'dark');
     };
 
-    // Prevent flash of wrong theme
-    if (!mounted) {
-        return null;
-    }
-
     return (
-        <ThemeContext.Provider value={{ theme, toggleTheme }}>
+        <ThemeContext.Provider value={{ theme, toggleTheme, mounted }}>
             {children}
         </ThemeContext.Provider>
     );

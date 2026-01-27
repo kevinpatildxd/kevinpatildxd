@@ -9,52 +9,31 @@ export default {
     darkMode: "class",
     theme: {
         extend: {
-            colors: {
-                primary: "var(--primary)",
-                secondary: "var(--secondary)",
-                tertiary: "var(--tertiary)",
-                background: "var(--background)",
-                foreground: "var(--foreground)",
-                "card-bg": "var(--card-bg)",
-                "dark-background": "#0D0D12",
-                "dark-foreground": "#F5F3F7",
-            },
             fontFamily: {
-                sans: ["Plus Jakarta Sans", "Inter", "system-ui", "sans-serif"],
+                sans: ["Inter", "system-ui", "sans-serif"],
             },
-            borderRadius: {
-                bento: "30px",
-            },
-            animation: {
-                marquee: "marquee 25s linear infinite",
-                "marquee-reverse": "marquee-reverse 25s linear infinite",
-                float: "float 6s ease-in-out infinite",
-                pulse: "pulse 2s ease-in-out infinite",
-            },
-            keyframes: {
-                marquee: {
-                    "0%": { transform: "translateX(0%)" },
-                    "100%": { transform: "translateX(-50%)" },
+            colors: {
+                primary: {
+                    DEFAULT: "#6366f1",
+                    dark: "#4f46e5",
                 },
-                "marquee-reverse": {
-                    "0%": { transform: "translateX(-50%)" },
-                    "100%": { transform: "translateX(0%)" },
+                accent: {
+                    DEFAULT: "#8b5cf6",
+                    secondary: "#a78bfa",
                 },
-                float: {
-                    "0%, 100%": { transform: "translateY(0px)" },
-                    "50%": { transform: "translateY(-20px)" },
+                surface: {
+                    DEFAULT: "#f9fafb",
+                    elevated: "#f3f4f6",
                 },
-                pulse: {
-                    "0%, 100%": { opacity: "1" },
-                    "50%": { opacity: "0.5" },
+                border: {
+                    DEFAULT: "#e5e7eb",
                 },
-            },
-            boxShadow: {
-                bento: "0 4px 20px rgba(80, 32, 122, 0.08)",
-                "bento-hover": "0 20px 40px rgba(80, 32, 122, 0.15)",
-                "bento-dark": "0 4px 20px rgba(0, 0, 0, 0.3)",
-                "bento-dark-hover": "0 20px 40px rgba(0, 0, 0, 0.4)",
-                "inset-cut": "inset 0 2px 8px rgba(80, 32, 122, 0.1)",
+                text: {
+                    DEFAULT: "#111827",
+                    secondary: "#4b5563",
+                    tertiary: "#6b7280",
+                    muted: "#6b7280",
+                },
             },
         },
     },

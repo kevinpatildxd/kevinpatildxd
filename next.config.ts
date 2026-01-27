@@ -2,7 +2,7 @@ import type { NextConfig } from "next";
 
 const nextConfig: NextConfig = {
   output: 'export',
-  basePath: '/kevinpatildxd',
+  // basePath: '/kevinpatildxd', // Uncomment for GitHub Pages deployment
   images: {
     unoptimized: true,
   },

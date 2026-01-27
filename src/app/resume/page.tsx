@@ -1,243 +1,247 @@
 'use client';
 
 import { motion } from 'framer-motion';
-import BentoCard from '@/components/BentoCard';
-import MagneticButton from '@/components/MagneticButton';
+
+const resumeData = {
+    contact: {
+        email: 'kevinpatil6354@gmail.com',
+        phone: '+91 6354864920',
+        location: 'Surat, Gujarat, India',
+    },
+    education: [
+        {
+            degree: 'B.Tech in Computer Science',
+            institution: 'Uka Tarsadia University, Surat',
+            date: 'Expected June 2026',
+            gpa: '8.15 GPA',
+        },
+        {
+            degree: 'Science',
+            institution: 'Samithi English Medium School',
+            date: 'March 2022',
+        },
+    ],
+    certifications: [
+        {
+            title: 'Cybersecurity Job Simulation',
+            issuer: 'Mastercard (via Forage)',
+            date: 'October 2025',
+        },
+        {
+            title: 'Cyber Job Simulation',
+            issuer: 'Deloitte (via Forage)',
+            date: 'October 2025',
+        },
+    ],
+    skills: ['ReactJS', 'NextJS', 'JavaScript', 'Flutter', 'PostgreSQL', 'Firebase', 'Git', 'Socket.io'],
+};
 
 export default function ResumePage() {
     return (
-        <div className="min-h-screen px-3 py-4 md:px-6 md:py-8">
-            <div className="max-w-[1400px] mx-auto">
-                {/* Header */}
-                <motion.div
-                    initial={{ opacity: 0, y: 30 }}
-                    animate={{ opacity: 1, y: 0 }}
-                    transition={{ duration: 0.6 }}
-                    className="text-center mb-16"
-                >
-                    <motion.span
-                        initial={{ opacity: 0, scale: 0.8 }}
-                        animate={{ opacity: 1, scale: 1 }}
-                        transition={{ delay: 0.2 }}
-                        className="inline-block px-4 py-1.5 bg-tertiary text-white text-sm font-semibold rounded-full mb-4 shadow-lg"
-                    >
-                        Resume
-                    </motion.span>
-                    <h1 className="text-3xl md:text-5xl font-bold text-[#2D1248] dark:text-white mb-4 drop-shadow-sm">My Resume</h1>
-                    <p className="text-lg text-[#4A3660] dark:text-white/70 max-w-2xl mx-auto">
-                        A comprehensive overview of my education, skills, and achievements.
-                    </p>
-                </motion.div>
-
-                {/* Full Height Split Layout - Responsive */}
-                <div className="flex flex-col lg:flex-row gap-6 min-h-[600px] lg:h-[calc(100vh-280px)]">
-                    {/* Left Side - PDF Preview (70%) */}
+        <div className="min-h-screen pt-20 md:pt-24">
+            <section className="px-4 sm:px-6 py-12 sm:py-16 md:py-24">
+                <div className="max-w-6xl mx-auto">
+                    {/* Header */}
                     <motion.div
-                        initial={{ opacity: 0, x: -30 }}
-                        animate={{ opacity: 1, x: 0 }}
-                        transition={{ delay: 0.3 }}
-                        className="w-full lg:w-[70%]"
+                        initial={{ opacity: 0, y: 30 }}
+                        animate={{ opacity: 1, y: 0 }}
+                        transition={{ duration: 0.6 }}
+                        className="text-center mb-10 sm:mb-16"
                     >
-                        <BentoCard className="h-full p-0 overflow-hidden" hover={false}>
-                            {/* PDF Embed */}
-                            <div className="h-full bg-gradient-to-br from-gray-100 to-gray-200 flex flex-col">
-                                {/* PDF Header Bar */}
-                                <div className="bg-primary/10 px-6 py-3 flex items-center justify-between">
-                                    <div className="flex items-center gap-3">
-                                        <div className="w-8 h-8 rounded-lg bg-primary flex items-center justify-center">
-                                            <svg className="w-4 h-4 text-white" fill="currentColor" viewBox="0 0 24 24">
-                                                <path d="M14 2H6a2 2 0 0 0-2 2v16a2 2 0 0 0 2 2h12a2 2 0 0 0 2-2V8l-6-6z" />
-                                                <path d="M14 2v6h6" />
+                        <motion.span
+                            initial={{ opacity: 0, scale: 0.9 }}
+                            animate={{ opacity: 1, scale: 1 }}
+                            transition={{ delay: 0.1 }}
+                            className="inline-block px-3 py-1.5 sm:px-4 sm:py-2 rounded-full bg-secondary border border-border text-xs sm:text-sm text-text-secondary mb-3 sm:mb-4"
+                        >
+                            Resume
+                        </motion.span>
+                        <h1 className="text-2xl sm:text-3xl md:text-4xl lg:text-5xl font-bold mb-3 sm:mb-4">
+                            My <span className="gradient-text">Resume</span>
+                        </h1>
+                        <p className="text-sm sm:text-base text-text-secondary max-w-2xl mx-auto px-4">
+                            A comprehensive overview of my education, skills, and achievements.
+                        </p>
+                    </motion.div>
+
+                    {/* Main Layout - Consistent 2:1 Grid */}
+                    <div className="grid lg:grid-cols-3 gap-4 sm:gap-6">
+                        {/* Resume Content - 2/3 */}
+                        <motion.div
+                            initial={{ opacity: 0, x: -30 }}
+                            animate={{ opacity: 1, x: 0 }}
+                            transition={{ delay: 0.2 }}
+                            className="lg:col-span-2 order-2 lg:order-1"
+                        >
+                            <div className="card p-6 sm:p-8 lg:p-10">
+                                {/* Header */}
+                                <div className="border-b border-border pb-4 sm:pb-6 mb-6 sm:mb-8">
+                                    <h2 className="text-xl sm:text-2xl md:text-3xl font-bold mb-1 sm:mb-2">Kevin Purushottam Patil</h2>
+                                    <p className="text-accent font-semibold text-sm sm:text-base mb-3 sm:mb-4">B.Tech Computer Science Student</p>
+                                    <div className="flex flex-col sm:flex-row flex-wrap gap-2 sm:gap-4 text-xs sm:text-sm text-text-secondary">
+                                        <span className="flex items-center gap-1.5 sm:gap-2">
+                                            <svg className="w-3.5 h-3.5 sm:w-4 sm:h-4 flex-shrink-0" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                                                <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M3 8l7.89 5.26a2 2 0 002.22 0L21 8M5 19h14a2 2 0 002-2V7a2 2 0 00-2-2H5a2 2 0 00-2 2v10a2 2 0 002 2z" />
                                             </svg>
-                                        </div>
-                                        <span className="font-semibold text-primary">Kevin_Patil_Resume.pdf</span>
-                                    </div>
-                                    <div className="flex items-center gap-2">
-                                        <a
-                                            href="/kevinpatildxd/kevin_resume.pdf"
-                                            target="_blank"
-                                            className="p-2 hover:bg-white/50 rounded-lg transition-colors"
-                                            title="Open in new tab"
-                                        >
-                                            <svg className="w-5 h-5 text-primary" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-                                                <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M10 6H6a2 2 0 00-2 2v10a2 2 0 002 2h10a2 2 0 002-2v-4M14 4h6m0 0v6m0-6L10 14" />
+                                            <span className="truncate">{resumeData.contact.email}</span>
+                                        </span>
+                                        <span className="flex items-center gap-1.5 sm:gap-2">
+                                            <svg className="w-3.5 h-3.5 sm:w-4 sm:h-4 flex-shrink-0" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                                                <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M3 5a2 2 0 012-2h3.28a1 1 0 01.948.684l1.498 4.493a1 1 0 01-.502 1.21l-2.257 1.13a11.042 11.042 0 005.516 5.516l1.13-2.257a1 1 0 011.21-.502l4.493 1.498a1 1 0 01.684.949V19a2 2 0 01-2 2h-1C9.716 21 3 14.284 3 6V5z" />
                                             </svg>
-                                        </a>
+                                            {resumeData.contact.phone}
+                                        </span>
+                                        <span className="flex items-center gap-1.5 sm:gap-2">
+                                            <svg className="w-3.5 h-3.5 sm:w-4 sm:h-4 flex-shrink-0" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                                                <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M17.657 16.657L13.414 20.9a1.998 1.998 0 01-2.827 0l-4.244-4.243a8 8 0 1111.314 0z" />
+                                                <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M15 11a3 3 0 11-6 0 3 3 0 016 0z" />
+                                            </svg>
+                                            {resumeData.contact.location}
+                                        </span>
                                     </div>
                                 </div>
 
-                                {/* PDF Content */}
-                                <div className="flex-1 p-8 overflow-y-auto">
-                                    <div className="bg-white rounded-xl shadow-lg max-w-[600px] mx-auto p-10">
-                                        {/* Resume Header */}
-                                        <div className="text-center border-b-2 border-primary pb-6 mb-6">
-                                            <motion.h2
-                                                initial={{ opacity: 0 }}
-                                                animate={{ opacity: 1 }}
-                                                transition={{ delay: 0.5 }}
-                                                className="text-3xl font-bold text-primary"
-                                            >
-                                                Kevin Purushottam Patil
-                                            </motion.h2>
-                                            <p className="text-tertiary font-semibold mt-2">B.Tech Computer Science Student</p>
-                                            <p className="text-sm text-primary/60 mt-2">
-                                                kevinpatil6354@gmail.com • +91 6354864920 • Surat, Gujarat, India
-                                            </p>
-                                            <div className="flex justify-center gap-4 mt-2 text-sm text-primary/60">
-                                                <a href="https://www.linkedin.com/in/kevin-patil-1b8a75291/" target="_blank" className="hover:text-tertiary transition-colors">LinkedIn</a>
-                                                <span>•</span>
-                                                <a href="https://github.com/kevinpatildxd" target="_blank" className="hover:text-tertiary transition-colors">GitHub</a>
-                                            </div>
-                                        </div>
+                                {/* Professional Summary */}
+                                <div className="mb-6 sm:mb-8">
+                                    <h3 className="text-sm sm:text-base md:text-lg font-bold mb-3 sm:mb-4 flex items-center gap-2">
+                                        <span className="w-1.5 h-1.5 sm:w-2 sm:h-2 rounded-full bg-accent" />
+                                        Professional Summary
+                                    </h3>
+                                    <p className="text-xs sm:text-sm text-text-secondary leading-relaxed">
+                                        Currently pursuing a B.Tech in Computer Science Engineering from Uka Tarsadia University.
+                                        Experienced in building applications for mobile, web, and desktop environments
+                                        using modern technologies including React, Next.js, Flutter, and PostgreSQL.
+                                    </p>
+                                </div>
 
-                                        {/* Professional Summary */}
-                                        <div className="mb-6">
-                                            <h3 className="text-lg font-bold text-primary border-b border-secondary pb-2 mb-4">
-                                                Professional Summary
-                                            </h3>
-                                            <p className="text-sm text-primary/70">
-                                                Currently pursuing a B.Tech in Computer Science Engineering from Uka Tarsadia University.
-                                                Experienced in building applications for mobile (Android, iOS), web, and desktop environments
-                                                using modern technologies including React, Next.js, Flutter, and PostgreSQL.
-                                            </p>
-                                        </div>
-
-                                        {/* Education Section */}
-                                        <div className="mb-6">
-                                            <h3 className="text-lg font-bold text-primary border-b border-secondary pb-2 mb-4">
-                                                Education
-                                            </h3>
-                                            <div className="space-y-4">
+                                {/* Education */}
+                                <div className="mb-6 sm:mb-8">
+                                    <h3 className="text-sm sm:text-base md:text-lg font-bold mb-3 sm:mb-4 flex items-center gap-2">
+                                        <span className="w-1.5 h-1.5 sm:w-2 sm:h-2 rounded-full bg-accent" />
+                                        Education
+                                    </h3>
+                                    <div className="space-y-3 sm:space-y-4">
+                                        {resumeData.education.map((edu, index) => (
+                                            <div key={index} className="flex flex-col sm:flex-row sm:justify-between sm:items-start gap-1">
                                                 <div>
-                                                    <div className="flex justify-between">
-                                                        <span className="font-semibold text-primary">B.Tech in Computer Science and Engineering</span>
-                                                        <span className="text-sm text-primary/60">Expected June 2026</span>
-                                                    </div>
-                                                    <p className="text-tertiary text-sm">Uka Tarsadia University, Surat</p>
-                                                    <p className="text-sm text-primary/70 mt-1">GPA: 8.15</p>
+                                                    <p className="font-semibold text-sm sm:text-base">{edu.degree}</p>
+                                                    <p className="text-accent text-xs sm:text-sm">{edu.institution}</p>
+                                                    {edu.gpa && <p className="text-text-tertiary text-xs sm:text-sm">{edu.gpa}</p>}
                                                 </div>
-                                                <div>
-                                                    <div className="flex justify-between">
-                                                        <span className="font-semibold text-primary">Science</span>
-                                                        <span className="text-sm text-primary/60">March 2022</span>
-                                                    </div>
-                                                    <p className="text-tertiary text-sm">Samithi English Medium School, Surat</p>
-                                                </div>
+                                                <span className="text-xs sm:text-sm text-text-tertiary">{edu.date}</span>
                                             </div>
-                                        </div>
+                                        ))}
+                                    </div>
+                                </div>
 
-                                        {/* Certifications Section */}
-                                        <div className="mb-6">
-                                            <h3 className="text-lg font-bold text-primary border-b border-secondary pb-2 mb-4">
-                                                Certifications
-                                            </h3>
-                                            <div className="space-y-3">
+                                {/* Certifications */}
+                                <div className="mb-6 sm:mb-8">
+                                    <h3 className="text-sm sm:text-base md:text-lg font-bold mb-3 sm:mb-4 flex items-center gap-2">
+                                        <span className="w-1.5 h-1.5 sm:w-2 sm:h-2 rounded-full bg-accent" />
+                                        Certifications
+                                    </h3>
+                                    <div className="space-y-3 sm:space-y-4">
+                                        {resumeData.certifications.map((cert, index) => (
+                                            <div key={index} className="flex flex-col sm:flex-row sm:justify-between sm:items-start gap-1">
                                                 <div>
-                                                    <div className="flex justify-between">
-                                                        <span className="font-semibold text-primary">Cybersecurity Job Simulation</span>
-                                                        <span className="text-sm text-primary/60">October 2025</span>
-                                                    </div>
-                                                    <p className="text-tertiary text-sm">Mastercard (via Forage)</p>
+                                                    <p className="font-semibold text-sm sm:text-base">{cert.title}</p>
+                                                    <p className="text-accent text-xs sm:text-sm">{cert.issuer}</p>
                                                 </div>
-                                                <div>
-                                                    <div className="flex justify-between">
-                                                        <span className="font-semibold text-primary">Cyber Job Simulation</span>
-                                                        <span className="text-sm text-primary/60">October 2025</span>
-                                                    </div>
-                                                    <p className="text-tertiary text-sm">Deloitte (via Forage)</p>
-                                                </div>
+                                                <span className="text-xs sm:text-sm text-text-tertiary">{cert.date}</span>
                                             </div>
-                                        </div>
+                                        ))}
+                                    </div>
+                                </div>
 
-                                        {/* Skills Section */}
-                                        <div>
-                                            <h3 className="text-lg font-bold text-primary border-b border-secondary pb-2 mb-4">
-                                                Skills
-                                            </h3>
-                                            <div className="flex flex-wrap gap-2">
-                                                {['ReactJS', 'NextJS', 'JavaScript', 'C', 'Flutter', 'PostgreSQL', 'Firebase', 'Git', 'VS Code', 'Socket.io'].map((skill) => (
-                                                    <span key={skill} className="px-3 py-1 bg-secondary text-primary text-xs font-semibold rounded-full">
-                                                        {skill}
-                                                    </span>
-                                                ))}
-                                            </div>
-                                        </div>
+                                {/* Skills */}
+                                <div>
+                                    <h3 className="text-sm sm:text-base md:text-lg font-bold mb-3 sm:mb-4 flex items-center gap-2">
+                                        <span className="w-1.5 h-1.5 sm:w-2 sm:h-2 rounded-full bg-accent" />
+                                        Skills
+                                    </h3>
+                                    <div className="flex flex-wrap gap-1.5 sm:gap-2">
+                                        {resumeData.skills.map((skill) => (
+                                            <span key={skill} className="tag text-xs">
+                                                {skill}
+                                            </span>
+                                        ))}
                                     </div>
                                 </div>
                             </div>
-                        </BentoCard>
-                    </motion.div>
+                        </motion.div>
 
-                    {/* Right Side - Download Section (30%) */}
-                    <motion.div
-                        initial={{ opacity: 0, x: 30 }}
-                        animate={{ opacity: 1, x: 0 }}
-                        transition={{ delay: 0.4 }}
-                        className="w-full lg:w-[30%] flex flex-col gap-6"
-                    >
-                        {/* Download Card */}
-                        <BentoCard className="flex-1 flex flex-col justify-center items-center text-center bg-gradient-to-br from-primary to-tertiary text-white" hover={false}>
-                            <motion.div
-                                initial={{ scale: 0 }}
-                                animate={{ scale: 1 }}
-                                transition={{ type: 'spring', delay: 0.6 }}
-                                className="w-24 h-24 rounded-3xl bg-white/20 flex items-center justify-center mb-6"
-                            >
-                                <svg className="w-12 h-12 text-white" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-                                    <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M12 10v6m0 0l-3-3m3 3l3-3m2 8H7a2 2 0 01-2-2V5a2 2 0 012-2h5.586a1 1 0 01.707.293l5.414 5.414a1 1 0 01.293.707V19a2 2 0 01-2 2z" />
-                                </svg>
-                            </motion.div>
-
-                            <h3 className="text-2xl font-bold mb-2">Download Resume</h3>
-                            <p className="text-white/70 mb-6">Get a copy of my full resume in PDF format</p>
-
-                            <a href="/kevinpatildxd/kevin_resume.pdf" download="Kevin_Patil_Resume.pdf">
-                                <motion.button
-                                    className="px-8 py-4 bg-white text-primary rounded-full font-bold text-lg hover:shadow-2xl transition-shadow magnetic-element"
-                                    whileHover={{ scale: 1.05 }}
-                                    whileTap={{ scale: 0.95 }}
-                                    data-magnetic
+                        {/* Sidebar - 1/3 */}
+                        <motion.div
+                            initial={{ opacity: 0, x: 30 }}
+                            animate={{ opacity: 1, x: 0 }}
+                            transition={{ delay: 0.3 }}
+                            className="space-y-4 sm:space-y-6 order-1 lg:order-2"
+                        >
+                            {/* Download Card */}
+                            <div className="card p-6 sm:p-8 text-center bg-gradient-to-br from-accent to-accent-secondary border-2 border-accent">
+                                <div className="w-12 h-12 sm:w-16 sm:h-16 mx-auto rounded-xl sm:rounded-2xl bg-surface-elevated flex items-center justify-center mb-4 sm:mb-6">
+                                    <svg className="w-6 h-6 sm:w-8 sm:h-8 text-accent" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                                        <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M12 10v6m0 0l-3-3m3 3l3-3m2 8H7a2 2 0 01-2-2V5a2 2 0 012-2h5.586a1 1 0 01.707.293l5.414 5.414a1 1 0 01.293.707V19a2 2 0 01-2 2z" />
+                                    </svg>
+                                </div>
+                                <h3 className="text-lg sm:text-xl font-bold mb-1 sm:mb-2 text-gray-900 dark:text-white">Download Resume</h3>
+                                <p className="text-gray-700 dark:text-white/80 text-xs sm:text-sm mb-4 sm:mb-6">Get my full resume in PDF</p>
+                                <motion.a
+                                    href="/kevinpatildxd/kevin_resume.pdf"
+                                    download="Kevin_Patil_Resume.pdf"
+                                    className="inline-flex items-center justify-center gap-2 w-full py-2.5 sm:py-3 bg-white dark:bg-gray-900 text-accent dark:text-white rounded-lg sm:rounded-xl font-bold text-sm sm:text-base hover:bg-gray-50 dark:hover:bg-gray-800 transition-colors shadow-lg border-2 border-white dark:border-gray-800"
+                                    whileHover={{ scale: 1.02 }}
+                                    whileTap={{ scale: 0.98 }}
                                 >
+                                    <svg className="w-4 h-4 sm:w-5 sm:h-5" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                                        <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M12 10v6m0 0l-3-3m3 3l3-3" />
+                                    </svg>
                                     Download PDF
-                                </motion.button>
-                            </a>
-                        </BentoCard>
+                                </motion.a>
+                            </div>
 
-                        {/* Quick Info Card */}
-                        <BentoCard delay={5}>
-                            <h3 className="font-bold text-primary mb-4">Quick Info</h3>
-                            <div className="space-y-3">
-                                <div className="flex justify-between">
-                                    <span className="text-primary/60">University</span>
-                                    <span className="font-semibold text-primary">Uka Tarsadia</span>
-                                </div>
-                                <div className="flex justify-between">
-                                    <span className="text-primary/60">GPA</span>
-                                    <span className="font-semibold text-primary">8.15</span>
-                                </div>
-                                <div className="flex justify-between">
-                                    <span className="text-primary/60">Certifications</span>
-                                    <span className="font-semibold text-primary">2 Active</span>
-                                </div>
-                                <div className="flex justify-between">
-                                    <span className="text-primary/60">Graduation</span>
-                                    <span className="font-semibold text-tertiary">June 2026</span>
+                            {/* Quick Info */}
+                            <div className="card p-6">
+                                <h3 className="font-bold text-sm sm:text-base mb-4">Quick Info</h3>
+                                <div className="space-y-2 sm:space-y-3 text-xs sm:text-sm">
+                                    <div className="flex justify-between">
+                                        <span className="text-text-tertiary">University</span>
+                                        <span className="font-medium">Uka Tarsadia</span>
+                                    </div>
+                                    <div className="flex justify-between">
+                                        <span className="text-text-tertiary">GPA</span>
+                                        <span className="font-medium">8.15</span>
+                                    </div>
+                                    <div className="flex justify-between">
+                                        <span className="text-text-tertiary">Certifications</span>
+                                        <span className="font-medium">2 Active</span>
+                                    </div>
+                                    <div className="flex justify-between">
+                                        <span className="text-text-tertiary">Graduation</span>
+                                        <span className="font-medium text-accent">June 2026</span>
+                                    </div>
                                 </div>
                             </div>
-                        </BentoCard>
 
-                        {/* Contact CTA */}
-                        <BentoCard delay={6} className="!p-5">
-                            <p className="text-sm text-primary/60 mb-3">Interested in working together?</p>
-                            <a href="mailto:kevinpatil6354@gmail.com">
-                                <MagneticButton variant="gradient" className="w-full">
+                            {/* Contact CTA */}
+                            <div className="card p-6 text-center">
+                                <p className="text-xs sm:text-sm text-text-tertiary mb-4">Interested in working together?</p>
+                                <motion.a
+                                    href="mailto:kevinpatil6354@gmail.com"
+                                    className="btn-primary w-full inline-flex items-center justify-center gap-2 text-sm sm:text-base py-3"
+                                    whileHover={{ scale: 1.02 }}
+                                    whileTap={{ scale: 0.98 }}
+                                >
+                                    <svg className="w-4 h-4" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                                        <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M3 8l7.89 5.26a2 2 0 002.22 0L21 8M5 19h14a2 2 0 002-2V7a2 2 0 00-2-2H5a2 2 0 00-2 2v10a2 2 0 002 2z" />
+                                    </svg>
                                     Get in Touch
-                                </MagneticButton>
-                            </a>
-                        </BentoCard>
-                    </motion.div>
+                                </motion.a>
+                            </div>
+                        </motion.div>
+                    </div>
                 </div>
-            </div>
+            </section>
         </div>
     );
 }
