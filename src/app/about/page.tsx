@@ -2,6 +2,7 @@
 
 import { useState } from 'react';
 import { motion } from 'framer-motion';
+import Image from 'next/image';
 
 const socialLinks = [
     {
@@ -108,8 +109,13 @@ export default function AboutPage() {
                                 {/* Profile Section */}
                                 <div className="border-b border-border pb-6 sm:pb-8 mb-6 sm:mb-8">
                                     <div className="flex items-start gap-4 sm:gap-6">
-                                        <div className="w-16 h-16 sm:w-24 sm:h-24 rounded-2xl bg-gradient-to-br from-accent to-accent-secondary flex items-center justify-center flex-shrink-0">
-                                            <span className="text-3xl sm:text-5xl">👨‍💻</span>
+                                        <div className="relative w-16 h-16 sm:w-24 sm:h-24 rounded-2xl overflow-hidden flex-shrink-0 border-2 border-accent/20">
+                                            <Image
+                                                src="/kevinpatildxd/images/profile.png"
+                                                alt="Kevin Patil"
+                                                fill
+                                                className="object-cover"
+                                            />
                                         </div>
                                         <div className="min-w-0 flex-1">
                                             <h2 className="text-xl sm:text-2xl md:text-3xl font-bold mb-1 sm:mb-2">Kevin Patil</h2>

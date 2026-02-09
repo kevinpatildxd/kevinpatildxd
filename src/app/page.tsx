@@ -2,6 +2,7 @@
 
 import { motion } from 'framer-motion';
 import Link from 'next/link';
+import Image from 'next/image';
 
 export default function HomePage() {
   return (
@@ -15,6 +16,17 @@ export default function HomePage() {
             transition={{ duration: 0.5 }}
             className="text-center mb-12"
           >
+            {/* Profile Image */}
+            <div className="relative w-32 h-32 mx-auto mb-8 rounded-full overflow-hidden border-4 border-white dark:border-gray-800 shadow-2xl">
+              <Image
+                src="/kevinpatildxd/images/profile.png"
+                alt="Kevin Patil"
+                fill
+                className="object-cover"
+                priority
+              />
+            </div>
+
             {/* Status Badge */}
             <div className="inline-flex items-center gap-2 px-4 py-2 rounded-full bg-green-50 dark:bg-green-900/20 border border-green-200 dark:border-green-800 mb-6">
               <span className="w-2 h-2 rounded-full bg-green-500 animate-pulse" />
