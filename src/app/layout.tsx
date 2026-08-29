@@ -1,26 +1,51 @@
 import type { Metadata } from "next";
-import { Inter } from "next/font/google";
+import { Geist, JetBrains_Mono } from "next/font/google";
 import "./globals.css";
-import Navigation from "@/components/Navigation";
 import ThemeProvider from "@/components/ThemeProvider";
-import PageWrapper from "@/components/PageWrapper";
+import TerminalOverlay from "@/components/TerminalOverlay";
+import SiteHeader from "@/components/SiteHeader";
+import SiteFooter from "@/components/SiteFooter";
 
-const inter = Inter({
+const geist = Geist({ subsets: ["latin"], variable: "--font-sans", display: "swap" });
+const jetbrainsMono = JetBrains_Mono({
   subsets: ["latin"],
-  weight: ["300", "400", "500", "600", "700", "800", "900"],
-  variable: "--font-inter",
+  variable: "--font-mono",
+  display: "swap",
 });
 
+const SITE_URL = "https://kevinpatildxd.github.io/kevinpatildxd";
+const TITLE = "Kevin Patil | Full-Stack Developer & Security Researcher";
+const DESCRIPTION =
+  "Co-Founder & CDO at Nudge Systems. Full-stack developer working across React, Node.js, Flutter and Solidity, author of the @kevinpatil/devguard CLI on npm, and published cybersecurity researcher.";
+
 export const metadata: Metadata = {
-  title: "Kevin Patil | Computer Science Student & Developer",
-  description: "Portfolio of Kevin Purushottam Patil - B.Tech Computer Science student at Uka Tarsadia University, specializing in React, Next.js, and full-stack development.",
-  keywords: ["Kevin Patil", "developer", "portfolio", "React", "Next.js", "computer science", "Uka Tarsadia University", "Surat"],
+  metadataBase: new URL(SITE_URL),
+  title: TITLE,
+  description: DESCRIPTION,
+  keywords: [
+    "Kevin Patil",
+    "Nudge Systems",
+    "full-stack developer",
+    "devguard",
+    "cybersecurity research",
+    "React",
+    "Next.js",
+    "Flutter",
+    "Solidity",
+    "Surat",
+  ],
   authors: [{ name: "Kevin Purushottam Patil" }],
+  alternates: { canonical: "/" },
   openGraph: {
-    title: "Kevin Patil | Computer Science Student & Developer",
-    description: "B.Tech Computer Science student passionate about building modern web applications",
+    title: TITLE,
+    description: DESCRIPTION,
+    url: SITE_URL,
+    siteName: "Kevin Patil",
     type: "website",
+    locale: "en_IN",
   },
+  twitter: { card: "summary_large_image", title: TITLE, description: DESCRIPTION },
+  robots: { index: true, follow: true },
 };
 
 export default function RootLayout({
@@ -30,45 +55,30 @@ export default function RootLayout({
 }>) {
   return (
     <html lang="en" suppressHydrationWarning>
-      <body className={`${inter.variable} font-sans antialiased`} suppressHydrationWarning>
+      <head>
+        {/*
+          Runs before first paint so the stored theme is applied without the
+          flash the static export would otherwise show on every load.
+        */}
+        <script
+          dangerouslySetInnerHTML={{
+            __html: `(function(){try{var t=localStorage.getItem('theme');if(t!=='light'&&t!=='dark'){t=window.matchMedia('(prefers-color-scheme: dark)').matches?'dark':'light';}document.documentElement.classList.add(t);}catch(e){document.documentElement.classList.add('light');}})();`,
+          }}
+        />
+      </head>
+      <body className={`${geist.variable} ${jetbrainsMono.variable} font-sans`} suppressHydrationWarning>
         <ThemeProvider>
-          <Navigation />
-          <main>
-            <PageWrapper>{children}</PageWrapper>
-          </main>
-          <footer className="border-t border-gray-200 dark:border-gray-800 bg-white dark:bg-gray-900">
-            <div className="container mx-auto px-4 sm:px-6 lg:px-8 py-8">
-              <div className="flex flex-col md:flex-row justify-between items-center gap-4">
-                <p className="text-sm text-gray-600 dark:text-gray-400">
-                  © 2024 Kevin Patil. All rights reserved.
-                </p>
-                <div className="flex items-center gap-6">
-                  <a
-                    href="https://github.com/kevinpatildxd"
-                    target="_blank"
-                    rel="noopener noreferrer"
-                    className="text-sm text-gray-600 dark:text-gray-400 hover:text-indigo-600 dark:hover:text-indigo-400 transition-colors"
-                  >
-                    GitHub
-                  </a>
-                  <a
-                    href="https://www.linkedin.com/in/kevin-patil-1b8a75291/"
-                    target="_blank"
-                    rel="noopener noreferrer"
-                    className="text-sm text-gray-600 dark:text-gray-400 hover:text-indigo-600 dark:hover:text-indigo-400 transition-colors"
-                  >
-                    LinkedIn
-                  </a>
-                  <a
-                    href="mailto:kevinpatil6354@gmail.com"
-                    className="text-sm text-gray-600 dark:text-gray-400 hover:text-indigo-600 dark:hover:text-indigo-400 transition-colors"
-                  >
-                    Email
-                  </a>
-                </div>
-              </div>
-            </div>
-          </footer>
+          <TerminalOverlay>
+            <a
+              href="#main"
+              className="sr-only focus:not-sr-only focus:fixed focus:left-4 focus:top-4 focus:z-[100] focus:border focus:border-accent focus:bg-surface focus:px-4 focus:py-2"
+            >
+              Skip to content
+            </a>
+            <SiteHeader />
+            <main id="main">{children}</main>
+            <SiteFooter />
+          </TerminalOverlay>
         </ThemeProvider>
       </body>
     </html>

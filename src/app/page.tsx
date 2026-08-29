@@ -1,216 +1,277 @@
-'use client';
-
-import { motion } from 'framer-motion';
 import Link from 'next/link';
 import Image from 'next/image';
+import { profile, projects, publication, certifications } from '@/data/profile';
+import Section from '@/components/Section';
+
+/**
+ * Shaped like a devguard report - the CLI Kevin publishes - but rendered
+ * entirely as a document. Nothing to type, nothing to discover: a recruiter
+ * can read it top to bottom in under a minute.
+ */
+const checks = [
+    {
+        name: 'Identity',
+        status: 'pass' as const,
+        value: 'Co-Founder & CDO, Nudge Systems',
+        detail: 'Software studio in Surat building web, mobile and e-commerce products.',
+        href: profile.contact.company,
+        hrefLabel: 'nudgesystems.in',
+    },
+    {
+        name: 'Ship record',
+        status: 'pass' as const,
+        value: `${projects.length} projects · 8 npm releases`,
+        detail: 'A published CLI, a Stripe-integrated platform, a deployed client tool, a dApp.',
+        internal: '/projects',
+        hrefLabel: 'See the work',
+    },
+    {
+        name: 'Peer review',
+        status: 'pass' as const,
+        value: publication.details,
+        detail: `“${publication.title}” — ${publication.venue}.`,
+        href: publication.href,
+        hrefLabel: 'Read the paper',
+    },
+    {
+        name: 'Credentials',
+        status: 'pass' as const,
+        value: `${certifications.length} job simulations`,
+        detail: 'Cybersecurity simulations with Mastercard and Deloitte via Forage.',
+        internal: '/certificates',
+        hrefLabel: 'View credentials',
+    },
+    {
+        name: 'Availability',
+        status: 'open' as const,
+        value: 'Accepting work',
+        detail: 'Open to full-time roles, contract work and collaborations.',
+        internal: '/about',
+        hrefLabel: 'Get in touch',
+    },
+];
+
+const stats = [
+    { value: String(projects.length), label: 'Projects shipped' },
+    { value: '8', label: 'npm releases' },
+    { value: '1', label: 'Published paper' },
+    { value: profile.education.gpa, label: 'GPA' },
+];
 
 export default function HomePage() {
-  return (
-    <div className="min-h-screen">
-      {/* Hero Section */}
-      <section className="container mx-auto px-4 sm:px-6 lg:px-8 py-16 md:py-24 lg:py-32">
-        <div className="max-w-5xl mx-auto">
-          <motion.div
-            initial={{ opacity: 0, y: 20 }}
-            animate={{ opacity: 1, y: 0 }}
-            transition={{ duration: 0.5 }}
-            className="text-center mb-12"
-          >
-            {/* Profile Image */}
-            <div className="relative w-32 h-32 mx-auto mb-8 rounded-full overflow-hidden border-4 border-white dark:border-gray-800 shadow-2xl">
-              <Image
-                src="/kevinpatildxd/images/profile.png"
-                alt="Kevin Patil"
-                fill
-                className="object-cover"
-                priority
-              />
-            </div>
+    return (
+        <>
+            {/* ── Hero ─────────────────────────────────────────── */}
+            <section className="border-b border-line">
+                <div className="mx-auto max-w-5xl px-5 py-16 sm:px-8 sm:py-20">
+                    <div className="flex flex-col-reverse gap-10 sm:flex-row sm:items-start sm:justify-between">
+                        <div className="max-w-2xl">
+                            <p className="label mb-4">{profile.role}</p>
+                            <h1 className="text-4xl font-semibold tracking-tight sm:text-5xl">
+                                Kevin Patil
+                            </h1>
+                            <p className="mt-5 text-lg text-muted">{profile.bio}</p>
 
-            {/* Status Badge */}
-            <div className="inline-flex items-center gap-2 px-4 py-2 rounded-full bg-green-50 dark:bg-green-900/20 border border-green-200 dark:border-green-800 mb-6">
-              <span className="w-2 h-2 rounded-full bg-green-500 animate-pulse" />
-              <span className="text-sm font-medium text-green-700 dark:text-green-400">
-                Available for opportunities
-              </span>
-            </div>
+                            <div className="mt-8 flex flex-wrap gap-3">
+                                <Link href="/projects" className="btn-primary text-sm">
+                                    View the work
+                                </Link>
+                                <a
+                                    href="/kevinpatildxd/kevin_resume.pdf"
+                                    download="Kevin_Patil_Resume.pdf"
+                                    className="btn-ghost text-sm"
+                                >
+                                    Download CV ↓
+                                </a>
+                            </div>
 
-            {/* Main Heading */}
-            <h1 className="text-4xl sm:text-5xl md:text-6xl lg:text-7xl font-bold text-gray-900 dark:text-white mb-4">
-              Hi, I'm{' '}
-              <span className="bg-gradient-to-r from-indigo-600 to-purple-600 dark:from-indigo-400 dark:to-purple-400 bg-clip-text text-transparent">
-                Kevin Patil
-              </span>
-            </h1>
+                            <p className="mt-6 flex items-center gap-2 font-mono text-xs text-dim">
+                                <span className="h-1.5 w-1.5 bg-ok" aria-hidden="true" />
+                                Available for work · {profile.contact.location}
+                            </p>
+                        </div>
 
-            {/* Subtitle */}
-            <p className="text-xl sm:text-2xl text-gray-600 dark:text-gray-300 mb-6">
-              B.Tech CSE Student & Cybersecurity Enthusiast
-            </p>
-
-            {/* Description */}
-            <p className="text-base sm:text-lg text-gray-500 dark:text-gray-400 max-w-2xl mx-auto mb-8">
-              Currently pursuing B.Tech in Computer Science Engineering from Uka Tarsadia University.
-              Passionate about building secure, scalable, and innovative digital solutions.
-            </p>
-
-            {/* CTA Buttons */}
-            <div className="flex flex-col sm:flex-row gap-4 justify-center items-center">
-              <Link href="/projects">
-                <motion.button
-                  whileHover={{ scale: 1.05 }}
-                  whileTap={{ scale: 0.95 }}
-                  className="w-full sm:w-auto px-8 py-3 bg-indigo-600 hover:bg-indigo-700 dark:bg-indigo-500 dark:hover:bg-indigo-600 text-white font-semibold rounded-lg shadow-lg hover:shadow-xl transition-all"
-                >
-                  View Projects
-                </motion.button>
-              </Link>
-              <Link href="/about">
-                <motion.button
-                  whileHover={{ scale: 1.05 }}
-                  whileTap={{ scale: 0.95 }}
-                  className="w-full sm:w-auto px-8 py-3 bg-white dark:bg-gray-800 border-2 border-gray-300 dark:border-gray-600 text-gray-700 dark:text-gray-200 font-semibold rounded-lg hover:border-indigo-600 dark:hover:border-indigo-400 transition-all"
-                >
-                  Get in Touch
-                </motion.button>
-              </Link>
-            </div>
-          </motion.div>
-
-          {/* Stats Grid */}
-          <motion.div
-            initial={{ opacity: 0, y: 20 }}
-            animate={{ opacity: 1, y: 0 }}
-            transition={{ duration: 0.5, delay: 0.2 }}
-            className="grid grid-cols-1 sm:grid-cols-3 gap-6 mt-16"
-          >
-            <StatsCard label="GPA" value="8.15" />
-            <StatsCard label="Projects" value="8" />
-            <StatsCard label="Certifications" value="2" />
-          </motion.div>
-
-          {/* Education & Skills */}
-          <motion.div
-            initial={{ opacity: 0, y: 20 }}
-            animate={{ opacity: 1, y: 0 }}
-            transition={{ duration: 0.5, delay: 0.4 }}
-            className="grid grid-cols-1 lg:grid-cols-2 gap-6 mt-8"
-          >
-            {/* Education Card */}
-            <div className="bg-white dark:bg-gray-800 rounded-2xl border border-gray-200 dark:border-gray-700 p-6 hover:shadow-lg transition-shadow">
-              <div className="flex items-start gap-4">
-                <div className="w-12 h-12 rounded-xl bg-gradient-to-br from-indigo-500 to-purple-600 flex items-center justify-center flex-shrink-0">
-                  <svg className="w-6 h-6 text-white" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-                    <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M12 14l9-5-9-5-9 5 9 5z" />
-                    <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M12 14l6.16-3.422a12.083 12.083 0 01.665 6.479A11.952 11.952 0 0012 20.055a11.952 11.952 0 00-6.824-2.998 12.078 12.078 0 01.665-6.479L12 14z" />
-                  </svg>
+                        <div className="shrink-0">
+                            <div className="relative h-28 w-28 overflow-hidden border border-line sm:h-36 sm:w-36">
+                                <Image
+                                    src="/kevinpatildxd/images/profile.png"
+                                    alt=""
+                                    fill
+                                    sizes="144px"
+                                    className="object-cover"
+                                    priority
+                                />
+                            </div>
+                        </div>
+                    </div>
                 </div>
-                <div>
-                  <p className="text-xs font-semibold text-indigo-600 dark:text-indigo-400 uppercase tracking-wider mb-1">
-                    Currently Studying
-                  </p>
-                  <h3 className="text-lg font-bold text-gray-900 dark:text-white mb-1">
-                    Uka Tarsadia University
-                  </h3>
-                  <p className="text-sm text-gray-600 dark:text-gray-400">
-                    B.Tech in Computer Science and Engineering
-                  </p>
-                  <p className="text-xs text-gray-500 dark:text-gray-500 mt-2">
-                    Expected Graduation: June 2026
-                  </p>
+            </section>
+
+            {/* ── Numbers ──────────────────────────────────────── */}
+            <section className="border-b border-line bg-surface">
+                <div className="mx-auto grid max-w-5xl grid-cols-2 divide-x divide-y divide-line sm:grid-cols-4 sm:divide-y-0">
+                    {stats.map((stat) => (
+                        <div key={stat.label} className="px-5 py-6 sm:px-8">
+                            <p className="stat text-accent">{stat.value}</p>
+                            <p className="label mt-1">{stat.label}</p>
+                        </div>
+                    ))}
                 </div>
-              </div>
-            </div>
+            </section>
 
-            {/* Tech Stack Card */}
-            <div className="bg-white dark:bg-gray-800 rounded-2xl border border-gray-200 dark:border-gray-700 p-6 hover:shadow-lg transition-shadow">
-              <p className="text-sm font-semibold text-gray-600 dark:text-gray-400 mb-4">Tech Stack</p>
-              <div className="flex flex-wrap gap-2">
-                {['React', 'Next.js', 'JavaScript', 'PostgreSQL', 'Firebase', 'Flutter', 'Socket.io', 'Git'].map((tech) => (
-                  <span
-                    key={tech}
-                    className="px-3 py-1.5 bg-gray-100 dark:bg-gray-700 text-gray-700 dark:text-gray-300 text-sm font-medium rounded-lg hover:bg-gray-200 dark:hover:bg-gray-600 transition-colors"
-                  >
-                    {tech}
-                  </span>
-                ))}
-              </div>
-            </div>
-          </motion.div>
-        </div>
-      </section>
+            {/* ── The report ───────────────────────────────────── */}
+            <Section number="01" title="Summary" className="mx-auto max-w-5xl px-5 sm:px-8">
+                <p className="mb-8 max-w-2xl text-sm text-muted">
+                    A quick verification of who I am and what I have actually shipped — every line
+                    links to the evidence.
+                </p>
 
-      {/* Quick Links Section */}
-      <section className="bg-gray-50 dark:bg-gray-900 py-16 md:py-20">
-        <div className="container mx-auto px-4 sm:px-6 lg:px-8">
-          <div className="max-w-5xl mx-auto">
-            <div className="text-center mb-12">
-              <h2 className="text-3xl md:text-4xl font-bold text-gray-900 dark:text-white mb-4">
-                Explore My Work
-              </h2>
-              <p className="text-lg text-gray-600 dark:text-gray-400">
-                Check out my projects, skills, and achievements
-              </p>
-            </div>
+                <div className="border-t border-line">
+                    {checks.map((check) => (
+                        <div key={check.name} className="finding">
+                            <div className="flex shrink-0 items-center gap-3 sm:w-52">
+                                <span
+                                    className={`chip ${check.status === 'pass' ? 'chip-pass' : 'chip-open'}`}
+                                >
+                                    {check.status === 'pass' ? '✓ Pass' : '● Open'}
+                                </span>
+                                <span className="text-sm font-medium">{check.name}</span>
+                            </div>
 
-            <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-6">
-              <QuickLinkCard
-                title="Projects"
-                description="View my latest work"
-                icon="💻"
-                href="/projects"
-              />
-              <QuickLinkCard
-                title="Skills"
-                description="Technologies I use"
-                icon="🛠️"
-                href="/skills"
-              />
-              <QuickLinkCard
-                title="Certificates"
-                description="My certifications"
-                icon="🏆"
-                href="/certificates"
-              />
-              <QuickLinkCard
-                title="Resume"
-                description="Download my CV"
-                icon="📄"
-                href="/resume"
-              />
-            </div>
-          </div>
-        </div>
-      </section>
-    </div>
-  );
-}
+                            <div className="min-w-0 flex-1">
+                                <p className="font-mono text-sm text-text">{check.value}</p>
+                                <p className="mt-1 text-sm text-muted">{check.detail}</p>
+                            </div>
 
-function StatsCard({ label, value }: { label: string; value: string }) {
-  return (
-    <div className="bg-white dark:bg-gray-800 rounded-2xl border border-gray-200 dark:border-gray-700 p-6 text-center hover:shadow-lg transition-shadow">
-      <p className="text-3xl md:text-4xl font-bold bg-gradient-to-r from-indigo-600 to-purple-600 dark:from-indigo-400 dark:to-purple-400 bg-clip-text text-transparent mb-2">
-        {value}
-      </p>
-      <p className="text-sm text-gray-600 dark:text-gray-400">{label}</p>
-    </div>
-  );
-}
+                            <div className="shrink-0">
+                                {check.internal ? (
+                                    <Link href={check.internal} className="link-accent text-sm">
+                                        {check.hrefLabel} →
+                                    </Link>
+                                ) : (
+                                    <a
+                                        href={check.href}
+                                        target="_blank"
+                                        rel="noopener noreferrer"
+                                        className="link-accent text-sm"
+                                    >
+                                        {check.hrefLabel} ↗
+                                    </a>
+                                )}
+                            </div>
+                        </div>
+                    ))}
+                </div>
+            </Section>
 
-function QuickLinkCard({ title, description, icon, href }: { title: string; description: string; icon: string; href: string }) {
-  return (
-    <Link href={href}>
-      <motion.div
-        whileHover={{ scale: 1.05, y: -5 }}
-        whileTap={{ scale: 0.95 }}
-        className="bg-white dark:bg-gray-800 rounded-2xl border border-gray-200 dark:border-gray-700 p-6 text-center cursor-pointer hover:shadow-xl transition-all group"
-      >
-        <span className="text-4xl mb-4 block">{icon}</span>
-        <h3 className="text-lg font-bold text-gray-900 dark:text-white mb-2 group-hover:text-indigo-600 dark:group-hover:text-indigo-400 transition-colors">
-          {title}
-        </h3>
-        <p className="text-sm text-gray-600 dark:text-gray-400">{description}</p>
-      </motion.div>
-    </Link>
-  );
+            {/* ── devguard ─────────────────────────────────────── */}
+            <Section number="02" title="Open source" className="mx-auto max-w-5xl px-5 sm:px-8">
+                <div className="panel p-6 sm:p-8">
+                    <div className="flex flex-wrap items-start justify-between gap-4">
+                        <div>
+                            <h3 className="text-xl font-semibold">@kevinpatil/devguard</h3>
+                            <p className="mt-1 font-mono text-xs text-dim">v3.4.1 · 8 releases</p>
+                        </div>
+                        <span className="chip chip-neutral">Node.js CLI</span>
+                    </div>
+
+                    <p className="mt-5 max-w-2xl text-sm text-muted">
+                        A zero-config command that guards a JavaScript or TypeScript project before
+                        it ships — validating environment files, auditing dependencies for known
+                        vulnerabilities, and analysing React code quality in a single pass.
+                    </p>
+
+                    <div className="mt-6 overflow-x-auto border border-line bg-elevated p-4">
+                        <code className="whitespace-nowrap font-mono text-xs text-muted">
+                            <span className="text-accent">$</span> npm i -g @kevinpatil/devguard
+                        </code>
+                    </div>
+
+                    <div className="mt-6 flex flex-wrap gap-3">
+                        <a
+                            href={profile.contact.npm}
+                            target="_blank"
+                            rel="noopener noreferrer"
+                            className="btn-ghost text-sm"
+                        >
+                            View on npm ↗
+                        </a>
+                        <a
+                            href="https://github.com/kevinpatildxd/devguard"
+                            target="_blank"
+                            rel="noopener noreferrer"
+                            className="btn-ghost text-sm"
+                        >
+                            Source ↗
+                        </a>
+                    </div>
+                </div>
+            </Section>
+
+            {/* ── Research ─────────────────────────────────────── */}
+            <Section number="03" title="Research" className="mx-auto max-w-5xl px-5 sm:px-8">
+                <article className="panel p-6 sm:p-8">
+                    <p className="label mb-3">
+                        {publication.venue} · {publication.details}
+                    </p>
+                    <h3 className="text-xl font-semibold sm:text-2xl">{publication.title}</h3>
+                    <p className="mt-4 max-w-2xl text-sm text-muted">{publication.summary}</p>
+
+                    <dl className="mt-6 grid grid-cols-2 gap-px border border-line bg-line sm:grid-cols-4">
+                        {[
+                            ['30', 'Papers reviewed'],
+                            ['235,795', 'URLs analysed'],
+                            ['99.96%', 'XGBoost accuracy'],
+                            ['9', 'Leaky features found'],
+                        ].map(([value, label]) => (
+                            <div key={label} className="bg-surface px-4 py-4">
+                                <dt className="font-mono text-lg font-semibold tabular-nums">
+                                    {value}
+                                </dt>
+                                <dd className="label mt-0.5">{label}</dd>
+                            </div>
+                        ))}
+                    </dl>
+
+                    <a
+                        href={publication.href}
+                        target="_blank"
+                        rel="noopener noreferrer"
+                        className="btn-primary mt-6 text-sm"
+                    >
+                        Read the paper ↗
+                    </a>
+                </article>
+            </Section>
+
+            {/* ── Selected work ────────────────────────────────── */}
+            <Section
+                number="04"
+                title="Selected work"
+                action={{ href: '/projects', label: `All ${projects.length} projects` }}
+                className="mx-auto max-w-5xl px-5 sm:px-8"
+            >
+                <div className="grid gap-px border border-line bg-line sm:grid-cols-2">
+                    {projects.slice(0, 4).map((project) => (
+                        <Link
+                            key={project.name}
+                            href="/projects"
+                            className="group bg-surface p-6 transition-colors hover:bg-elevated"
+                        >
+                            <div className="flex items-start justify-between gap-3">
+                                <h3 className="font-semibold group-hover:text-accent">
+                                    {project.name}
+                                </h3>
+                                <span className="chip chip-neutral">{project.status}</span>
+                            </div>
+                            <p className="mt-2 text-sm text-accent">{project.outcome}</p>
+                            <p className="mt-3 font-mono text-xs text-dim">
+                                {project.tags.slice(0, 4).join(' · ')}
+                            </p>
+                        </Link>
+                    ))}
+                </div>
+            </Section>
+        </>
+    );
 }

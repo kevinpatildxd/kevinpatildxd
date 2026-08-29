@@ -1,169 +1,90 @@
-'use client';
+import { skillCategories, projects } from '@/data/profile';
 
-import { motion } from 'framer-motion';
-
-const skillCategories = [
-    {
-        title: 'Frontend',
-        icon: '🎨',
-        skills: [
-            { name: 'React', level: 85 },
-            { name: 'Next.js', level: 80 },
-            { name: 'JavaScript', level: 85 },
-            { name: 'HTML/CSS', level: 90 },
-            { name: 'Tailwind CSS', level: 85 },
-        ],
-    },
-    {
-        title: 'Backend & Database',
-        icon: '⚙️',
-        skills: [
-            { name: 'Node.js', level: 75 },
-            { name: 'PostgreSQL', level: 70 },
-            { name: 'Firebase', level: 75 },
-            { name: 'Socket.io', level: 70 },
-            { name: 'REST APIs', level: 80 },
-        ],
-    },
-    {
-        title: 'Mobile & Tools',
-        icon: '📱',
-        skills: [
-            { name: 'Flutter', level: 70 },
-            { name: 'Dart', level: 70 },
-            { name: 'Git', level: 85 },
-            { name: 'VS Code', level: 90 },
-            { name: 'C', level: 65 },
-        ],
-    },
-];
-
-const allSkills = [
-    'React', 'Next.js', 'JavaScript', 'HTML', 'CSS', 'Tailwind',
-    'PostgreSQL', 'Firebase', 'Socket.io', 'Express', 'Node.js', 'REST API',
-    'Flutter', 'Dart', 'C', 'Git', 'VS Code', 'GitHub'
-];
+/** Which projects prove which skill — evidence instead of a percentage bar. */
+const provenBy: Record<string, string[]> = {
+    'React': ['GV Fitness', 'Compi'],
+    'Next.js': ['Compi'],
+    'TypeScript': ['devguard', 'Compi'],
+    'JavaScript': ['React + CryptoJS Privacy Suite'],
+    'Tailwind CSS': ['GV Fitness'],
+    'Shadcn UI': ['GV Fitness'],
+    'HTML/CSS': ['React + CryptoJS Privacy Suite'],
+    'Node.js': ['devguard', 'StackIt'],
+    'Express': ['Compi', 'StackIt'],
+    'PHP REST APIs': ['GV Fitness'],
+    'PostgreSQL': ['StackIt', 'Compi'],
+    'MySQL': ['GV Fitness'],
+    'Socket.io': ['StackIt'],
+    'Flutter': ['StackIt', 'MotoLink'],
+    'Dart': ['MotoLink'],
+    'WebRTC': ['MotoLink'],
+    'Solidity': ['Blockchain Supply Chain dApp'],
+    'Hardhat': ['Blockchain Supply Chain dApp'],
+    'Ethers.js': ['Blockchain Supply Chain dApp'],
+    'Stripe': ['Compi'],
+    'Cloudinary': ['Compi'],
+    'React Query': ['GV Fitness'],
+    'Vite': ['React + CryptoJS Privacy Suite'],
+    'CI static analysis': ['devguard'],
+};
 
 export default function SkillsPage() {
     return (
-        <div className="min-h-screen pt-20 md:pt-24">
-            <section className="px-4 sm:px-6 py-12 sm:py-16 md:py-24">
-                <div className="max-w-6xl mx-auto">
-                    {/* Header */}
-                    <motion.div
-                        initial={{ opacity: 0, y: 30 }}
-                        animate={{ opacity: 1, y: 0 }}
-                        transition={{ duration: 0.6 }}
-                        className="text-center mb-10 sm:mb-16"
-                    >
-                        <motion.span
-                            initial={{ opacity: 0, scale: 0.9 }}
-                            animate={{ opacity: 1, scale: 1 }}
-                            transition={{ delay: 0.1 }}
-                            className="inline-block px-3 py-1.5 sm:px-4 sm:py-2 rounded-full bg-secondary border border-border text-xs sm:text-sm text-text-secondary mb-3 sm:mb-4"
+        <div className="mx-auto max-w-5xl px-5 py-14 sm:px-8 sm:py-16">
+            <header className="border-b border-line pb-8">
+                <p className="label mb-3">Toolkit</p>
+                <h1 className="text-3xl font-semibold tracking-tight sm:text-4xl">The stack</h1>
+                <p className="mt-4 max-w-2xl text-muted">
+                    No percentage bars — a self-assigned &ldquo;React 85%&rdquo; means nothing. Each
+                    row names the projects the skill was actually used in.
+                </p>
+            </header>
+
+            <div className="mt-10 grid gap-6 sm:grid-cols-2">
+                {skillCategories.map((category) => (
+                    <section key={category.title} className="panel">
+                        <h2 className="border-b border-line bg-elevated px-5 py-3 text-sm font-semibold">
+                            {category.title}
+                        </h2>
+                        <ul className="divide-y divide-line">
+                            {category.skills.map((skill) => {
+                                const proof = provenBy[skill] ?? [];
+                                return (
+                                    <li
+                                        key={skill}
+                                        className="flex flex-wrap items-baseline justify-between gap-x-4 gap-y-1 px-5 py-2.5"
+                                    >
+                                        <span className="text-sm">{skill}</span>
+                                        <span className="font-mono text-[11px] text-dim">
+                                            {proof.length ? proof.join(', ') : '—'}
+                                        </span>
+                                    </li>
+                                );
+                            })}
+                        </ul>
+                    </section>
+                ))}
+            </div>
+
+            <section className="mt-14">
+                <h2 className="section-rule mb-6 text-sm font-semibold uppercase tracking-[0.14em]">
+                    What each project exercised
+                </h2>
+                <dl className="border-t border-line">
+                    {projects.map((project) => (
+                        <div
+                            key={project.name}
+                            className="flex flex-col gap-1 border-b border-line py-4 sm:flex-row sm:gap-6"
                         >
-                            Expertise
-                        </motion.span>
-                        <h1 className="text-2xl sm:text-3xl md:text-4xl lg:text-5xl font-bold mb-3 sm:mb-4">
-                            Skills & <span className="gradient-text">Technologies</span>
-                        </h1>
-                        <p className="text-sm sm:text-base text-text-secondary max-w-2xl mx-auto px-4">
-                            Technologies I've learned and use to build modern web and mobile applications.
-                        </p>
-                    </motion.div>
-
-                    {/* Skills Tags - Scrollable on mobile */}
-                    <motion.div
-                        initial={{ opacity: 0 }}
-                        animate={{ opacity: 1 }}
-                        transition={{ delay: 0.3 }}
-                        className="mb-10 sm:mb-16 overflow-x-auto pb-4 -mx-4 px-4 sm:mx-0 sm:px-0"
-                    >
-                        <div className="flex flex-wrap justify-center gap-2 sm:gap-3 min-w-max sm:min-w-0">
-                            {allSkills.map((skill, index) => (
-                                <motion.span
-                                    key={skill}
-                                    initial={{ opacity: 0, scale: 0.8 }}
-                                    animate={{ opacity: 1, scale: 1 }}
-                                    transition={{ delay: 0.3 + index * 0.03 }}
-                                    className="tag text-xs sm:text-sm"
-                                >
-                                    {skill}
-                                </motion.span>
-                            ))}
+                            <dt className="text-sm font-medium sm:w-64 sm:shrink-0">
+                                {project.name}
+                            </dt>
+                            <dd className="font-mono text-xs text-muted">
+                                {project.tags.join(' · ')}
+                            </dd>
                         </div>
-                    </motion.div>
-
-                    {/* Skill Categories */}
-                    <div className="grid sm:grid-cols-2 lg:grid-cols-3 gap-4 sm:gap-6 mb-10 sm:mb-16">
-                        {skillCategories.map((category, catIndex) => (
-                            <motion.div
-                                key={category.title}
-                                initial={{ opacity: 0, y: 30 }}
-                                animate={{ opacity: 1, y: 0 }}
-                                transition={{ delay: 0.2 + catIndex * 0.1 }}
-                                className="card p-4 sm:p-6"
-                            >
-                                <div className="flex items-center gap-2 sm:gap-3 mb-4 sm:mb-6">
-                                    <span className="text-xl sm:text-2xl">{category.icon}</span>
-                                    <h3 className="text-base sm:text-lg font-bold">{category.title}</h3>
-                                </div>
-
-                                <div className="space-y-3 sm:space-y-4">
-                                    {category.skills.map((skill, skillIndex) => (
-                                        <div key={skill.name}>
-                                            <div className="flex justify-between mb-1.5 sm:mb-2">
-                                                <span className="text-xs sm:text-sm font-medium text-text-secondary">{skill.name}</span>
-                                                <span className="text-xs sm:text-sm font-medium text-accent">{skill.level}%</span>
-                                            </div>
-                                            <div className="h-1.5 sm:h-2 bg-secondary rounded-full overflow-hidden">
-                                                <motion.div
-                                                    className="h-full bg-gradient-to-r from-accent to-accent-secondary rounded-full"
-                                                    initial={{ width: 0 }}
-                                                    animate={{ width: `${skill.level}%` }}
-                                                    transition={{ duration: 1, delay: 0.5 + catIndex * 0.2 + skillIndex * 0.1 }}
-                                                />
-                                            </div>
-                                        </div>
-                                    ))}
-                                </div>
-                            </motion.div>
-                        ))}
-                    </div>
-
-                    {/* Summary Section */}
-                    <motion.div
-                        initial={{ opacity: 0, y: 30 }}
-                        animate={{ opacity: 1, y: 0 }}
-                        transition={{ delay: 0.6 }}
-                        className="card p-4 sm:p-6 md:p-8 text-center"
-                    >
-                        <h2 className="text-lg sm:text-xl md:text-2xl font-bold mb-3 sm:mb-4">Overall Proficiency</h2>
-                        <p className="text-xs sm:text-sm text-text-secondary max-w-2xl mx-auto mb-6 sm:mb-8">
-                            Continuously learning and expanding my skill set through hands-on projects and real-world development experience.
-                        </p>
-
-                        <div className="grid grid-cols-2 sm:grid-cols-4 gap-3 sm:gap-4 md:gap-6">
-                            {[
-                                { label: 'Frontend', value: '85%' },
-                                { label: 'JavaScript', value: '80%' },
-                                { label: 'Backend', value: '75%' },
-                                { label: 'Mobile', value: '70%' },
-                            ].map((item, index) => (
-                                <motion.div
-                                    key={item.label}
-                                    initial={{ opacity: 0, scale: 0.9 }}
-                                    animate={{ opacity: 1, scale: 1 }}
-                                    transition={{ delay: 0.7 + index * 0.1 }}
-                                    className="p-3 sm:p-4 bg-secondary rounded-xl sm:rounded-2xl"
-                                >
-                                    <p className="text-lg sm:text-xl md:text-2xl font-bold gradient-text mb-0.5 sm:mb-1">{item.value}</p>
-                                    <p className="text-[10px] sm:text-xs md:text-sm text-text-tertiary">{item.label}</p>
-                                </motion.div>
-                            ))}
-                        </div>
-                    </motion.div>
-                </div>
+                    ))}
+                </dl>
             </section>
         </div>
     );
