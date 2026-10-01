@@ -39,3 +39,7 @@ yarn-error.log*
 # typescript
 *.tsbuildinfo
 next-env.d.ts
+
+# readme asset generator
+/.github/readme/node_modules
+/.github/readme/dist

@@ -1,0 +1,13 @@
+{
+  "name": "readme-assets",
+  "private": true,
+  "type": "module",
+  "description": "Generates the SVGs embedded in the profile README.",
+  "scripts": {
+    "static": "node banner.mjs && node terminal.mjs",
+    "stats": "node stats.mjs"
+  },
+  "dependencies": {
+    "opentype.js": "^1.3.4"
+  }
+}

@@ -1,122 +1,146 @@
-<h1 align="center">Kevin Patil</h1>
+<picture>
+  <source media="(prefers-color-scheme: dark)" srcset=".github/assets/banner-dark.svg">
+  <img alt="Kevin Patil — Co-Founder & CDO, Nudge Systems. Full-stack developer and cybersecurity researcher." src=".github/assets/banner-light.svg" width="100%">
+</picture>
 
 <p align="center">
-  <strong>Co-Founder &amp; CDO at <a href="https://nudgesystems.in">Nudge Systems</a></strong><br>
-  Full-stack developer · Cybersecurity researcher · Surat, India
+  <a href="https://kevinpatildxd.github.io/kevinpatildxd/"><img alt="Portfolio" src="https://img.shields.io/badge/portfolio-live-E8241C?style=flat-square&labelColor=000000"></a>
+  <a href="https://www.npmjs.com/package/@kevinpatil/devguard"><img alt="devguard on npm" src="https://img.shields.io/npm/v/@kevinpatil/devguard?style=flat-square&label=devguard&labelColor=000000&color=E8241C"></a>
+  <a href="https://matjournals.net/engineering/index.php/JCSPIC/article/view/3146"><img alt="Published paper" src="https://img.shields.io/badge/published-JCSPIC%202026-E8241C?style=flat-square&labelColor=000000"></a>
+  <a href="https://www.linkedin.com/in/kevin-patil-1b8a75291/"><img alt="LinkedIn" src="https://img.shields.io/badge/linkedin-connect-E8241C?style=flat-square&labelColor=000000"></a>
 </p>
 
 <p align="center">
-  <a href="https://kevinpatildxd.github.io/kevinpatildxd/"><img alt="Portfolio" src="https://img.shields.io/badge/Portfolio-live-D6470A?style=flat-square"></a>
-  <a href="https://www.npmjs.com/package/@kevinpatil/devguard"><img alt="npm" src="https://img.shields.io/npm/v/@kevinpatil/devguard?style=flat-square&label=devguard&color=CB3837"></a>
-  <a href="https://matjournals.net/engineering/index.php/JCSPIC/article/view/3146"><img alt="Publication" src="https://img.shields.io/badge/Published-JCSPIC%202026-4B8BBE?style=flat-square"></a>
-  <a href="https://www.linkedin.com/in/kevin-patil-1b8a75291/"><img alt="LinkedIn" src="https://img.shields.io/badge/LinkedIn-connect-0A66C2?style=flat-square"></a>
+  I build software end to end: React frontends, Node.js and PHP APIs, databases and smart contracts.<br>
+  Nothing ships half-baked on either side of the stack. If an idea won't hold up,<br>
+  you'll hear it before the code does.
 </p>
 
----
-
-I build software end to end — React frontends, Node.js and PHP APIs, databases, and
-smart contracts. Nothing ships half-baked on either side of the stack. If an idea
-won't hold up, you'll hear it before the code does.
-
-Currently completing a **B.Tech in Computer Science Engineering** at Uka Tarsadia
-University (expected June 2026) while running development at Nudge Systems, a
-software studio building web, mobile and e-commerce products.
+<picture>
+  <source media="(prefers-color-scheme: dark)" srcset="https://raw.githubusercontent.com/kevinpatildxd/kevinpatildxd/output/stats-dark.svg">
+  <img alt="Live stats: latest devguard version, npm downloads and releases, and GitHub contributions over the last 12 months" src="https://raw.githubusercontent.com/kevinpatildxd/kevinpatildxd/output/stats-light.svg" width="100%">
+</picture>
 
 <br>
 
-## 📦 devguard
+<table>
+  <tr>
+    <td width="33%" valign="top">
+      <sub><code>01 / OPEN SOURCE</code></sub><br>
+      <a href="https://github.com/kevinpatildxd/devguard"><b>devguard</b></a><br>
+      Pre-ship auditing CLI for JS and TS projects, published to npm.
+    </td>
+    <td width="33%" valign="top">
+      <sub><code>02 / RESEARCH</code></sub><br>
+      <a href="https://matjournals.net/engineering/index.php/JCSPIC/article/view/3146"><b>Anti-Phishing Frameworks</b></a><br>
+      Peer-reviewed systematic review, JCSPIC Vol. 5, 2026.
+    </td>
+    <td width="33%" valign="top">
+      <sub><code>03 / STUDIO</code></sub><br>
+      <a href="https://nudgesystems.in"><b>Nudge Systems</b></a><br>
+      Co-founder and CDO of a Surat studio shipping web, mobile and e-commerce products.
+    </td>
+  </tr>
+</table>
 
-An open-source Node.js CLI that guards JavaScript and TypeScript projects **before
-they ship** — validating `.env` files, auditing dependencies for CVEs, and analysing
-React code quality in a single zero-config command.
+<br>
+
+## `01` devguard
+
+A zero-config Node.js CLI that guards JavaScript and TypeScript projects **before they ship**.
+One command validates `.env` files, audits dependencies for CVEs and analyses React code quality.
+
+<img alt="devguard catching a missing env key, vulnerable and unused dependencies, a missing alt attribute and inline handlers in a demo app" src=".github/assets/devguard-demo.svg" width="100%">
 
 ```bash
-npm i -g @kevinpatil/devguard
-devguard
+npx @kevinpatil/devguard
 ```
 
-```
-✓ .env validated      — 0 missing keys
-✓ dependencies        — 0 CVEs
-✓ react analysis      — hooks, a11y, RSC boundaries
+Catches missing env keys, known vulnerabilities, unused packages, hook violations, accessibility
+issues and RSC boundary errors. Ships with CI integration, JSON output and strict mode.
 
-all checks passed
-```
-
-Catches missing env keys, known vulnerabilities, unused packages, hook violations,
-accessibility issues and RSC boundary errors. Ships with CI integration, JSON output
-and strict mode.
-
-**[View on npm →](https://www.npmjs.com/package/@kevinpatil/devguard)** ·
-**[Source →](https://github.com/kevinpatildxd/devguard)**
+**[npm →](https://www.npmjs.com/package/@kevinpatil/devguard)** &nbsp;·&nbsp; **[Source →](https://github.com/kevinpatildxd/devguard)**
 
 <br>
 
-## 🔐 Research
+## `02` Research
 
-### Anti-Phishing Frameworks
-*Journal of Cyber Security, Privacy Issues and Challenges — Vol. 5, Issue 1, 2026*
+**Anti-Phishing Frameworks** — *Journal of Cyber Security, Privacy Issues and Challenges, Vol. 5, Issue 1, 2026.*
+Co-authored with Vishvendu Bhatt.
 
-A systematic review of 30 phishing-detection papers (2020–2025) spanning classical
-machine learning to LLM-based systems. Empirically validates Random Forest and
-XGBoost on the largest public phishing dataset, and identifies data leakage in nine
-widely-used features.
+A systematic review of 30 phishing-detection papers (2020–2025), from classical machine learning to
+LLM-based systems. It validates Random Forest and XGBoost on the largest public phishing dataset and
+finds data leakage in nine widely used features.
 
 | Papers reviewed | URLs analysed | XGBoost accuracy | Leaky features found |
 |:---:|:---:|:---:|:---:|
-| 30 | 235,795 | 99.96% | 9 |
+| **30** | **235,795** | **99.96%** | **9** |
 
-Co-authored with Vishvendu Bhatt.
 **[Read the paper →](https://matjournals.net/engineering/index.php/JCSPIC/article/view/3146)**
 
 <br>
 
-## 🛠 Selected work
+## `03` Work
 
-| Project | What it is | Stack |
-|---|---|---|
-| **[devguard](https://github.com/kevinpatildxd/devguard)** | Pre-ship auditing CLI, published to npm | Node.js · TypeScript |
-| **Compi** | Competition platform — Stripe checkout, JWT auth, PDF tickets | Next.js 14 · Express · PostgreSQL |
-| **GV Fitness** | Deployed gym management tool — memberships, invoicing, expiry alerts | React · PHP REST · MySQL |
-| **[StackIt](https://github.com/kevinpatildxd/ODOO_SIGKILL_BOTS)** | Q&A forum built in a 7-hour hackathon | Flutter · Node.js · Socket.io |
-| **[Supply Chain dApp](https://github.com/kevinpatildxd/smart-contract)** | On-chain product tracking with enforced state transitions | Solidity · Hardhat · Ethers.js |
-| **[MotoLink](https://github.com/kevinpatildxd/moto-link-app)** | Group voice + live GPS for motorcycle riders | Flutter · WebRTC |
-| **[Privacy Suite](https://github.com/kevinpatildxd/Reactjs-cryptojs-Based-project)** | Six apps with AES encryption before storage | React 19 · CryptoJS |
-
-<br>
-
-## 💻 Stack
-
-| | |
-|---|---|
-| **Frontend** | React · Next.js · TypeScript · Tailwind CSS · Shadcn UI |
-| **Backend** | Node.js · Express · PHP REST APIs · PostgreSQL · MySQL · Socket.io |
-| **Mobile & Web3** | Flutter · Dart · WebRTC · Solidity · Hardhat · Ethers.js |
-| **Tooling** | Git · Stripe · Cloudinary · React Query · Vite · CI static analysis |
+| No. | Project | What it is | Stack | Status |
+|:---:|---|---|---|---|
+| 01 | **[devguard](https://github.com/kevinpatildxd/devguard)** | Pre-ship auditing CLI, published to npm | Node.js · TypeScript | Active |
+| 02 | **Compi** | Competition platform with Stripe checkout, JWT auth and PDF tickets | Next.js 14 · Express · PostgreSQL | Shipped |
+| 03 | **GV Fitness** | Gym management tool: memberships, invoicing, expiry alerts | React · PHP REST · MySQL | Shipped |
+| 04 | **[StackIt](https://github.com/kevinpatildxd/ODOO_SIGKILL_BOTS)** | Q&A forum built in a 7-hour hackathon | Flutter · Node.js · Socket.io | Shipped |
+| 05 | **[Supply Chain dApp](https://github.com/kevinpatildxd/smart-contract)** | On-chain product tracking with enforced state transitions | Solidity · Hardhat · Ethers.js | Shipped |
+| 06 | **[MotoLink](https://github.com/kevinpatildxd/moto-link-app)** | Group voice and live GPS for motorcycle riders | Flutter · WebRTC | In progress |
+| 07 | **[Privacy Suite](https://github.com/kevinpatildxd/Reactjs-cryptojs-Based-project)** | Six apps that AES-encrypt data before it is stored | React 19 · CryptoJS | Live |
 
 <br>
 
-## 🌐 This repository
+## `04` Stack
 
-The source of my portfolio at
-**[kevinpatildxd.github.io/kevinpatildxd](https://kevinpatildxd.github.io/kevinpatildxd/)** —
-a statically exported Next.js site. It reads as a `devguard` report, and there's a
-working shell hidden behind the <kbd>~</kbd> key if you'd rather type than scroll.
+**Frontend** &nbsp; React · Next.js · TypeScript · Tailwind CSS · Shadcn UI<br>
+**Backend** &nbsp; Node.js · Express · PHP REST APIs · PostgreSQL · MySQL · Socket.io<br>
+**Mobile & Web3** &nbsp; Flutter · Dart · WebRTC · Solidity · Hardhat · Ethers.js<br>
+**Tooling** &nbsp; Git · Stripe · Cloudinary · React Query · Vite · CI static analysis
+
+<br>
+
+## `05` Activity
+
+<picture>
+  <source media="(prefers-color-scheme: dark)" srcset="https://raw.githubusercontent.com/kevinpatildxd/kevinpatildxd/output/contributions-dark.svg">
+  <img alt="Kevin's GitHub contribution graph, redrawn every 12 hours" src="https://raw.githubusercontent.com/kevinpatildxd/kevinpatildxd/output/contributions-light.svg" width="100%">
+</picture>
+
+<br>
+
+## Get in touch
+
+Open to full-time roles, contract work and collaborations.
+
+**[kevinpatil6354@gmail.com](mailto:kevinpatil6354@gmail.com)** &nbsp;·&nbsp;
+**[LinkedIn](https://www.linkedin.com/in/kevin-patil-1b8a75291/)** &nbsp;·&nbsp;
+**[nudgesystems.in](https://nudgesystems.in)** &nbsp;·&nbsp;
+**[Portfolio](https://kevinpatildxd.github.io/kevinpatildxd/)**
+
+<br>
+
+<details>
+<summary><sub>About this repository</sub></summary>
+
+<br>
+
+This repo is the source of my portfolio at
+**[kevinpatildxd.github.io/kevinpatildxd](https://kevinpatildxd.github.io/kevinpatildxd/)**,
+a statically exported Next.js site. It reads as a `devguard` report, and there's a working shell
+behind the <kbd>~</kbd> key if you'd rather type than scroll.
 
 ```bash
 npm install
 npm run dev      # http://localhost:3000/kevinpatildxd
 ```
 
-Built with Next.js 16 (App Router), TypeScript, Tailwind CSS and Framer Motion.
-Deployed to GitHub Pages on every push to `main`.
+Built with Next.js 16 (App Router), TypeScript, Tailwind CSS and Framer Motion. Deployed to GitHub
+Pages on every push to `main`. The stats strip and contribution graph are redrawn every 12 hours by
+`.github/workflows/readme-assets.yml`; the banner and terminal demo are generated by the scripts in
+`.github/readme/`.
 
-<br>
-
-## 📫 Get in touch
-
-Open to full-time roles, contract work and collaborations.
-
-- **Email** — [kevinpatil6354@gmail.com](mailto:kevinpatil6354@gmail.com)
-- **LinkedIn** — [kevin-patil](https://www.linkedin.com/in/kevin-patil-1b8a75291/)
-- **Studio** — [nudgesystems.in](https://nudgesystems.in)
+</details>
