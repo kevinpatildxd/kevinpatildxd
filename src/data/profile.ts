@@ -83,7 +83,7 @@ export const projects: Project[] = [
     {
         name: 'Compi',
         category: 'Full-Stack Platform',
-        status: 'ongoing',
+        status: 'completed',
         description:
             'Full-stack competition and raffle platform where users browse live competitions, purchase tickets, and win prizes. Public storefront with countdowns and a winners showcase, secure Stripe checkout, and an admin dashboard for managing competitions, tickets and users.',
         outcome: 'Stripe payments, JWT auth and PDF ticket generation shipped',

@@ -2,6 +2,7 @@ import Link from 'next/link';
 import Image from 'next/image';
 import { profile, projects, publication, certifications } from '@/data/profile';
 import Section from '@/components/Section';
+import GitActivity from '@/components/GitActivity';
 
 /**
  * Shaped like a devguard report - the CLI Kevin publishes - but rendered
@@ -271,6 +272,11 @@ export default function HomePage() {
                         </Link>
                     ))}
                 </div>
+            </Section>
+
+            {/* ── Live activity ────────────────────────────────── */}
+            <Section number="05" title="Activity" className="mx-auto max-w-5xl px-5 sm:px-8">
+                <GitActivity />
             </Section>
         </>
     );
